@@ -1,0 +1,233 @@
+extends layout
+
+block stylesheets
+  link(rel='stylesheet', href='/stylesheets/guidesHome.css')
+  link(href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet")
+
+block content
+  .container
+    //
+     Button trigger modal 
+    a(href="#")
+      span.glyphicons.glyphicon-flash.statisticsModal(data-toggle='modal', data-target='#myModal')
+    //
+     Modal 
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+            h4#myModalLabel.modal-title Modal title
+          .modal-body
+            | ...
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='button') Save changes
+    #wrapper.active
+      //
+         Sidebar 
+      #sidebar-wrapper
+        ul#sidebar_menu.sidebar-nav
+          li.sidebar-brand
+            #menu-toggle
+              | Welcome (Name)
+        ul.messageQueue
+          li.chatName Jordanjskdfnjks
+            img.chatImage(src="../images/adrianalimacircle.png")
+          li.chatName Jordan
+            img.chatImage(src="../images/adrianalimacircle.png")
+          li.chatName Jordan
+            img.chatImage(src="../images/adrianalimacircle.png")
+        a(href="#")
+          span#main_icon.glyphicons.glyphicon-envelope
+    .inner-cover
+      .inner
+        div.cover
+          div.infoheader
+            h1.cover-heading Jordan's Profile
+            button#enable.btn.btn-large.btn-primary Edit Profile
+          div.guideInformation
+            div Age:
+              a#age(data-type="combodate" data-format="YYYY-MM-DD" data-viewformat="MM/DD/YYYY" data-value="1990/06/15" data-pk="1" data-title="Enter username")
+            div Language:
+              a#language(data-type="text" data-pk="1" data-url="/post" data-title="Enter username") this should be editable
+            div Interests:
+              a#interests(data-type="text" data-pk="1" data-url="/post" data-title="Enter username") this should be editable
+            div Specialties:
+              a#specialties(data-type="text" data-pk="1" data-url="/post" data-title="Enter username") this should be editable
+            div Bio:
+              a#bio(data-type="textarea" data-pk="1"  data-rows="8" data-title="Enter username") this should be editable this ould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable thisould be editable this should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editableld be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editableld be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editableld be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editableld be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editablethis should be editable
+        #touristChat
+  //- hr
+  //- include footer.jade
+
+
+block scripts
+  script#touristChatMessenger(type="text/x-handlebars-template").
+    <div class="row touristMessenger">
+        <div class="col-md-12 col-lg-12 messengerRight">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"> {{name}}</span>
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs removeButton" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-remove"></span> 
+                        </button>
+                    </div>
+                </div>
+                <div class="panel-body chatBody">
+                    <ul class="chat">
+                        <li class="left clearfix">
+                          <span class="chat-img pull-left">
+                              <img src={{image}} alt="User Avatar" class="img-circle" />
+                          </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">{{name}}</strong> 
+                                    <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span>12 mins ago
+                                    </small>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="right clearfix"><span class="chat-img pull-right">
+                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago
+                                    </small>
+                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="left clearfix">
+                          <span class="chat-img pull-left">
+                              <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle"/>
+                          </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Jack Sparrow</strong>
+                                    <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span>14 mins ago
+                                    </small>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="right clearfix">
+                          <span class="chat-img pull-right">
+                              <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                          </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <small class=" text-muted">
+                                      <span class="glyphicon glyphicon-time"></span>15 mins ago
+                                    </small>
+                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="right clearfix">
+                          <span class="chat-img pull-right">
+                              <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                          </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <small class=" text-muted">
+                                      <span class="glyphicon glyphicon-time"></span>15 mins ago
+                                    </small>
+                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="right clearfix">
+                          <span class="chat-img pull-right">
+                              <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                          </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <small class=" text-muted">
+                                      <span class="glyphicon glyphicon-time"></span>15 mins ago
+                                    </small>
+                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="right clearfix">
+                          <span class="chat-img pull-right">
+                              <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                          </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <small class=" text-muted">
+                                      <span class="glyphicon glyphicon-time"></span>15 mins ago
+                                    </small>
+                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="right clearfix">
+                          <span class="chat-img pull-right">
+                              <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
+                          </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <small class=" text-muted">
+                                      <span class="glyphicon glyphicon-time"></span>15 mins ago
+                                    </small>
+                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat">Send</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  script(src="../javascripts/guidesHome.js")
+  script(src="//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js")
+  script(src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js")
+  script(src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js")
+  script(src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js")
+  script(src="../javascripts/editableForm.js")
+

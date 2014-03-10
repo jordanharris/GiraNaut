@@ -1,0 +1,15 @@
+extends layout
+
+block stylesheets
+  link(rel='stylesheet', href='/stylesheets/appSuccess.css')
+
+block content
+  .container
+    .jumbotron
+      h1 Successful Submission
+      h3.lead Congratulations, your application has been successfuly submitted!  An email will be sent to you with further details about the next step in the process!
+      p
+        a.btn.btn-lg.btn-primary(href="/") GiraNaut Home
+
+
+block scripts

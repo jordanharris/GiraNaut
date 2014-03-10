@@ -1,0 +1,26 @@
+#myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+  .modal-dialog
+    .col-xs-8.col-xs-offset-2.col-sm-8.col-sm-offset-2.col-md-8.col-md-offset-2
+      .panel.panel-default.sign-up-form
+        .panel-heading
+          h3.panel-title Please sign in
+        .panel-body
+          form#login-nav(accept-charset='UTF-8', action="/logInSubmission", method="post", role='form')
+            fieldset
+              .form-group.email
+                input#emailSignIn.form-control(placeholder='E-mail', name='logInSubmission[email]', type='text')
+                //- span
+              .form-group.password
+                input#passwordSignIn.form-control(placeholder='Password', name='logInSubmission[password]', type='password', value='')
+                //- span
+              .checkbox
+                label
+                  input.checkbox(name='remember', type='checkbox', value='Remember Me')
+                  | Remember Me
+              input#submitSignIn.btn.btn-lg.btn-success.btn-block(type='submit', value='Login')
+      //- .modal-footer
+      //-   button.btn.btn-default(type='button', data-dismiss='modal') Close
+      //-   button.btn.btn-primary(type='button') Save changes
+
+
+

@@ -1,0 +1,80 @@
+extends layout
+
+block stylesheets
+  link(rel='stylesheet', href='/stylesheets/apply.css')
+
+block content
+  .container
+    header.header
+      .container
+        .row
+          .col-md-12
+            nav.navbar.navbar-inverse.navbar-fixed-top.container-fluid(role='navigation')
+              //
+                 Brand and toggle get grouped for better mobile display 
+              .navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                a#giraNautLogo.navbar-brand(href="/") GiraNaut
+              //
+                 Collect the nav links, forms, and other content for toggling 
+              #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                //- ul.nav.navbar-nav
+                //-   li#tourists.navGuide
+                //-     a Tourists
+                //-   li#tourGuides.navGuide
+                //-     a Tour Guides
+                //-   li#contactUs.navGuide
+                //-     a FAQ
+                ul.nav.navbar-nav.navbar-right
+                  li.dropdown
+                    a#signInDropDown.dropdown-toggle
+                      //- | Sign-Up 
+                      b.glyphicon.glyphicon-globe
+    .jumbotron
+      h1 Becoming a GiraNaut Guide!
+      p.lead You're well on your way to becoming the next GiraNaut Guide.  You've taken the intial steps and have a passion to explore your city!  That passion is exactly what GiraNaut is looking for.  We want to make sure that only the most passionate and driven people become Guides, regardless of previous tour guiding experience! To ensure that you share in the same goals and passion as we do at GiraNaut we invite you to fill out the application below!
+    form.form-horizontal(method="post" action="/apply/submitted" role='form')
+        .form-group
+          label.col-sm-2.col-sm-offset-1.control-label(for='inputFirstName') First Name:
+          .col-sm-6
+            input#inputFirstName.form-control(type='text', placeholder='First Name')
+
+        .form-group
+          label.col-sm-2.col-sm-offset-1.control-label(for='inputLastName') Last Name:
+          .col-sm-6
+            input#inputLastName.form-control(type='text', placeholder='Last Name')
+
+        .form-group
+          label.col-sm-2.col-sm-offset-1.control-label(for='inputEmail') Email:
+          .col-sm-6
+            input#inputEmail.form-control(type='email', placeholder='Email')
+
+        .form-group
+          label.col-sm-2.col-sm-offset-1.control-label(for='inputAddress') Address:
+          .col-sm-6
+            input#inputAddress.form-control(type='text', placeholder='Address')
+
+        .form-group
+          label.col-sm-2.col-sm-offset-1.control-label(for='inputName') Name:
+          .col-sm-6
+            input#inputName.form-control(type='text', placeholder='Name')
+
+        .form-group
+          label.col-sm-2.col-sm-offset-1.control-label(for='inputAddress') Address:
+          .col-sm-6
+            input#inputAddress.form-control(type='text', placeholder='Address')
+
+        .form-group
+          .col-sm-offset-2.col-sm-6
+            button.btn.btn-default(type='submit') Submit Application
+    hr
+    include footer.jade
+
+
+
+
+

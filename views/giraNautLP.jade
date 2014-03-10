@@ -1,0 +1,317 @@
+extends layout
+
+block stylesheets
+  link(rel='stylesheet', href='/stylesheets/giraNautLP.css')
+  link(rel='stylesheet', href='/stylesheets/modal.css')
+block content
+  .main-container
+      article.section-container.landingPageSection
+          header
+            .container
+              .row
+                .col-md-12
+                  nav.navbar.navbar-inverse.navbar-fixed-top.container-fluid(role='navigation')
+                    //
+                       Brand and toggle get grouped for better mobile display 
+                    .navbar-header
+                      button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+                        span.sr-only Toggle navigation
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                      a#giraNautLogo.navbar-brand GiraNaut
+                    //
+                       Collect the nav links, forms, and other content for toggling 
+                    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+                      ul.nav.navbar-nav
+                        li#tourists.navGuide
+                          a Tourists
+                        li#tourGuides.navGuide
+                          a Tour Guides
+                        li#contactUs.navGuide
+                          a FAQ
+                      ul.nav.navbar-nav.navbar-right
+                        li.dropdown
+                          a#signInDropDown.dropdown-toggle(href='/sign-up')
+                            | Sign-Up 
+                            b.glyphicon.glyphicon-globe
+                    //
+                       /.navbar-collapse 
+          //
+              <div class="container"> 
+          aside.socialMediaSignUp
+            ul.asideULSocialMedia
+              li
+                h1.socialMediaHeading Sign-in
+              li
+                img.socialMediaImageGiraNaut(src='../images/giranaut.png')
+              li
+                img.socialMediaImageTwitter(src='../images/twitter.png')
+              li
+                img.socialMediaImageFacebook(src='../images/facebook.png')
+              li
+                img.socialMediaImagePinterest(src='../images/pinterest.png')
+              li
+                img.socialMediaImageGooglePlus(src='../images/googleplus.png')
+          //
+             </div> 
+          section.motto.container-fluid
+            .row
+              .col-sm-6.col-md-6
+                .row
+                  .banner.col-sm-12.col-md-12
+                    h1 See the world your way, with the locals who know it best!
+                    h3.subHeader
+                      span.glyphicon.glyphicon-share-alt
+                      a#explore.btn.exploreGiraNaut Explore GiraNaut
+                .row
+                  .banner.banners.col-sm-12.col-md-8
+                    h4 Grab the new GiraNaut app on the app store now!
+                    h4.subHeader
+                      span.glyphicon.glyphicon-share-alt
+                      img#giraApp.btn(src='../images/availableAppStoreGN.png')
+              //- .col-xs-12.col-sm-4.col-sm-offset-1.col-md-4.col-md-offset-1
+              //-   .panel.panel-default.sign-up-form
+              //-     .panel-heading
+              //-       h3.panel-title Please sign in
+              //-     .panel-body
+              //-       form#login-nav(accept-charset='UTF-8', action="/logInSubmission", method="post", role='form')
+              //-         fieldset
+              //-           .form-group
+              //-             input#emailSignIn.form-control(placeholder='E-mail', name='logInSubmission[email]', type='text')
+              //-           .form-group
+              //-             input#passwordSignIn.form-control(placeholder='Password', name='logInSubmission[password]', type='password', value='')
+              //-           .checkbox
+              //-             label
+              //-               input.checkbox(name='remember', type='checkbox', value='Remember Me')
+              //-               | Remember Me
+              //-           input#submitSignIn.btn.btn-lg.btn-success.btn-block(type='submit', value='Login')
+        article#touristInfo.section-container.articleMargin
+          #carousel-example-generic.carousel.slide(data-ride='carousel')
+            //
+               Indicators 
+            ol.carousel-indicators
+              li.active(data-target='#carousel-example-generic', data-slide-to='0')
+              li(data-target='#carousel-example-generic', data-slide-to='1')
+              li(data-target='#carousel-example-generic', data-slide-to='2')
+              li(data-target='#carousel-example-generic', data-slide-to='3')
+            //
+               Wrapper for slides 
+            .carousel-inner
+              .item.active
+                img.carouselImage(src='../images/islands.jpeg', alt='')
+                .carousel-caption
+                  p.slidereel Find a GiraNaut certified Tour Guide in your city!
+              .item
+                img.carouselImage(src='../images/islands.jpeg', alt='')
+                .carousel-caption
+                  p.slidereel Message the GiraNaut Guides and plan your amazing personalized adventure!
+              .item
+                img.carouselImage(src='../images/islands.jpeg', alt='')
+                .carousel-caption
+                  p.slidereel Easy payment options to safely transfer funds to your Guide
+              .item
+                img.carouselImage(src='../images/islands.jpeg', alt='')
+                .carousel-caption
+                  p.slidereel
+                    | Enjoy your once in a lifetime personalized tour with the best Guides in the world!
+            //
+               Controls 
+            a.left.carousel-control(href='#carousel-example-generic', data-slide='prev')
+              span.glyphicon.glyphicon-chevron-left
+            a.right.carousel-control(href='#carousel-example-generic', data-slide='next')
+              span.glyphicon.glyphicon-chevron-right
+          section.sectionSeparation
+            .container.marketing
+              .row
+                .col-lg-4.touristGNDescription
+                  img.img-circle(src='../images/googlestock.jpeg', alt='')
+                  h2 Tours
+                  p
+                    | Tours are designed by you!  At GiraNaut we care that the tour you get, is the tour you want.  Our guides are highly knowledgeable and know their city better than anyone.  Want a tour of the Eiffel Tower and the Luvre? Or maybe you'd like a tour of the best of Paris nightlife.  You talk to the guides ahead of time and determine your perfect tour!
+                .col-lg-4.touristGNDescription
+                  img.img-circle(src='../images/googlestock.jpeg', alt='')
+                  h2 Guides
+                  p
+                    | GiraNaut Guides are some of the best guides in the world.  Each guide must go through a rigorous application process and is continually reviewed to ensure only the best guides remain part of the GiraNaut team.  We take pride in our guides and know that you'll have amazing stories to share with your friends when you finish your tour.
+                .col-lg-4.touristGNDescription
+                  img.img-circle(src='../images/googlestock.jpeg', alt='')
+                  h2 Payment
+                  p
+                    | At GiraNaut we want to ensure that payments for services are SAFE and EASY.  Thats is why we utilize paypal and will never ask for your credit card information directly.
+              hr
+        article#tourGuideInfo.section-container.articleMargin
+          .container.marketing
+            .row.featurette
+              .col-md-7
+                h1.featurette-heading Hey everyone
+                p.lead Want to become the next GiraNaut Guide? Here's why you should!
+              .col-md-5
+                img.featurette-image.img-responsive(src='../images/becomeTourGuide.png', alt='become a tour guide picture')
+            hr
+            .row.marketing
+              .col-lg-6
+                h4.subHeadingsAlignment Not Your Typical Tour Guiding
+                p
+                  | Each tour is uniquely tailorejwe fjkw ejkf wjkef wjkef jkw jkwe fjkwe fjks vjk fdvj dfjkv dfjkv dfjkv jdkfv jkdf vjkdf vjk v;lkadf vjkad fvjka dfvkla dfjkv ajkdfc jkadv cjkadf vjkad fvjka fdvjkad d to the tourists (no two tours are the same!) djf sjkd jsf jkd js fdjs fjkdsf js fjkd sjkd fjks dfkjsd fjk sdfjksd jkf sdfs
+                h4.subHeadingsAlignment Subheading
+                p
+                  | thie sdjkg fdjer jgk ejkve hjwe fjkw ejkf wjkef wjkef jkw jkwe fjkwe fjks vjk fdvj dfjkv dfjkv dfjkv jdkfv jkdf vjkdf vjk v;lkadf vjkad fvjka dfvkla dfjkv ajkdfc jkadv cjkadf vjkad fvjka fdvjkad ej vj ejhcksjd fsjkdf jksd fjks dfjksd fkjs djkf sjdkf sjkdf kjsd fjksd fjksd fjks dfjksd fjksd fjks dfjks dfjks dkfj sdjkf skdjf jksdf ksdfjksf ejhkfv
+                h4.subHeadingsAlignment Subheading
+                p
+                  | thie sdjkg fdjer jgk ejkve hjwe fjkw ejkf wjkef wjkef jkw jkwe fjkwe fjks vjk fdvj dfjkv dfjkv dfjkv jdkfv jkdf vjkdf vjk v;lkadf vjkad fvjka dfvkla dfjkv ajkdfc jkadv cjkadf vjkad fvjka fdvjkad ej vj jksdnfjksndfk skjd fjks dfjks djkf sjkdf jksd fjksd fjksd fjksd fjks dfjks djkf sjkdf sjkdf jksdf jksdf jksd fjksd fjks dfjks dfjks dkjf sdkjfejhc ejhkfv
+              .col-lg-6
+                h4.subHeadingsAlignment Subheading
+                p
+                  | thie sdjkg fdjer jgk ejkve hejwe fjkw ejkf wjkef wjkef jkw jkwe fjkwe fjks vjk fdvj dfjkv dfjkv dfjkv jdkfv jkdf vjkdf vjk v;lkadf vjkad fvjka dfvkla dfjkv ajkdfc jkadv cjkadf vjkad fvjka fdvjkad j jkdsfnjksd fjksd fj sdjkf sjkdf jksd fjk sfgjkd fgjk dfjkg dlfjhg jdfk gjkdaf gjks fgjkd jgkf djk fjks jkg sjkf djks fgjks fjgk dfjkg djkfg vj ejhc ejhkfv
+                h4.subHeadingsAlignment Subheading
+                p
+                  | thie sdjkg fdjer jgk ems gjks fgjks fjk sjkfg jksdf gkjdf gm,s fm,ds jkl jwkd fgjks fgkjs gjk sgmn fsjkg dfjkv dsjkfg ldsf mndaf gjjwe fjkw ejkf wjkef wjkef jkw jkwe fjkwe fjks vjk fdvj dfjkv dfjkv dfjkv jdkfv jkdf vjkdf vjk v;lkadf vjkad fvjka dfvkla dfjkv ajkdfc jkadv cjkadf vjkad fvjka fdvjkad kadf gjkve hej vj ejhc ejhkfv
+                h4.subHeadingsAlignment Subheading
+                p
+                  | thie sdjkg fdjer jadf,g dnaf jwe fjkw ejkf wjkef wjkef jkw jkwe fjkwe fjks vjk fdvj dfjkv dfjkv dfjkv jdkfv jkdf vjkdf vjk v;lkadf vjkad fvjka dfvkla dfjkv ajkdfc jkadv cjkadf vjkad fvjka fdvjkad vlad fvlnad fhjv afjhv aldcj lajdf lja dhjkl almn jq hja djkf ahjdf ljad fvjhl adfjkv ajkdf vkaldfv hjladf vgk ejkve hej vj ejhc ejhkfv
+            .row.marketing
+              p.applicationProcessButton
+                a.btn.btn-primary(href='/apply', role='button') View Details and Apply
+            hr
+        article#contactInfo.section-container.articleMargin
+          .container
+            .row
+              .col-md-12
+                h1.sectionHeader Frequently Asked Questions
+            .row
+              .col-md-6.col-md-offset-3
+                //
+                   Tab panes 
+                .tab-content.faq-cat-content
+                  #faq-cat-1.tab-pane.active.in.fade
+                    #accordion-cat-1.panel-group
+                      .panel.panel-default.panel-faq
+                        .panel-heading
+                          a(data-toggle='collapse', data-parent='#accordion-cat-1', href='#faq-cat-1-sub-1')
+                            h4.panel-title
+                              | FAQ Item Category #1
+                              span.pull-right
+                                i.glyphicon.glyphicon-plus
+                        #faq-cat-1-sub-1.panel-collapse.collapse
+                          .panel-body
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      .panel.panel-default.panel-faq
+                        .panel-heading
+                          a(data-toggle='collapse', data-parent='#accordion-cat-1', href='#faq-cat-1-sub-2')
+                            h4.panel-title
+                              | FAQ Item Category #2
+                              span.pull-right
+                                i.glyphicon.glyphicon-plus
+                        #faq-cat-1-sub-2.panel-collapse.collapse
+                          .panel-body
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      .panel.panel-default.panel-faq
+                        .panel-heading
+                          a(data-toggle='collapse', data-parent='#accordion-cat-1', href='#faq-cat-1-sub-3')
+                            h4.panel-title
+                              | FAQ Item Category #3
+                              span.pull-right
+                                i.glyphicon.glyphicon-plus
+                        #faq-cat-1-sub-3.panel-collapse.collapse
+                          .panel-body
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      .panel.panel-default.panel-faq
+                        .panel-heading
+                          a(data-toggle='collapse', data-parent='#accordion-cat-1', href='#faq-cat-1-sub-4')
+                            h4.panel-title
+                              | FAQ Item Category #4
+                              span.pull-right
+                                i.glyphicon.glyphicon-plus
+                        #faq-cat-1-sub-4.panel-collapse.collapse
+                          .panel-body
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      .panel.panel-default.panel-faq
+                        .panel-heading
+                          a(data-toggle='collapse', data-parent='#accordion-cat-1', href='#faq-cat-1-sub-5')
+                            h4.panel-title
+                              | FAQ Item Category #5
+                              span.pull-right
+                                i.glyphicon.glyphicon-plus
+                        #faq-cat-1-sub-5.panel-collapse.collapse
+                          .panel-body
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      .panel.panel-default.panel-faq
+                        .panel-heading
+                          a(data-toggle='collapse', data-parent='#accordion-cat-1', href='#faq-cat-1-sub-6')
+                            h4.panel-title
+                              | FAQ Item Category #6
+                              span.pull-right
+                                i.glyphicon.glyphicon-plus
+                        #faq-cat-1-sub-6.panel-collapse.collapse
+                          .panel-body
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      .panel.panel-default.panel-faq
+                        .panel-heading
+                          a(data-toggle='collapse', data-parent='#accordion-cat-1', href='#faq-cat-1-sub-7')
+                            h4.panel-title
+                              | FAQ Item Category #7
+                              span.pull-right
+                                i.glyphicon.glyphicon-plus
+                        #faq-cat-1-sub-7.panel-collapse.collapse
+                          .panel-body
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      .panel.panel-default.panel-faq
+                        .panel-heading
+                          a(data-toggle='collapse', data-parent='#accordion-cat-1', href='#faq-cat-1-sub-8')
+                            h4.panel-title
+                              | FAQ Item Category #8
+                              span.pull-right
+                                i.glyphicon.glyphicon-plus
+                        #faq-cat-1-sub-8.panel-collapse.collapse
+                          .panel-body
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      .panel.panel-default.panel-faq
+                        .panel-heading
+                          a(data-toggle='collapse', data-parent='#accordion-cat-1', href='#faq-cat-1-sub-9')
+                            h4.panel-title
+                              | FAQ Item Category #9
+                              span.pull-right
+                                i.glyphicon.glyphicon-plus
+                        #faq-cat-1-sub-9.panel-collapse.collapse
+                          .panel-body
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      .panel.panel-default.panel-faq
+                        .panel-heading
+                          a(data-toggle='collapse', data-parent='#accordion-cat-1', href='#faq-cat-1-sub-10')
+                            h4.panel-title
+                              | FAQ Item Category #10
+                              span.pull-right
+                                i.glyphicon.glyphicon-plus
+                        #faq-cat-1-sub-10.panel-collapse.collapse
+                          .panel-body
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      .panel.panel-default.panel-faq
+                        .panel-heading
+                          a(data-toggle='collapse', data-parent='#accordion-cat-1', href='#faq-cat-1-sub-11')
+                            h4.panel-title
+                              | FAQ Item Category #11
+                              span.pull-right
+                                i.glyphicon.glyphicon-plus
+                        #faq-cat-1-sub-11.panel-collapse.collapse
+                          .panel-body
+                            | Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            hr
+          include modal.jade
+          include footer.jade
+      //
+         ////image cache, put images here and then allow them to load on page but (visibility-so borwser reads it but not responds) hidden 
+      img.cachedImages(src='../images/giranautactive.png')
+      img.cachedImages(src='../images/giranauthover.png')
+      img.cachedImages(src='../images/googleplusactive.png')
+      img.cachedImages(src='../images/googleplushover.png')
+      img.cachedImages(src='../images/facebookhover.png')
+      img.cachedImages(src='../images/facebookactive.png')
+      img.cachedImages(src='../images/pinteresthover.png')
+      img.cachedImages(src='../images/pinterestactive.png')
+      img.cachedImages(src='../images/twitterhover.png')
+      img.cachedImages(src='../images/twitteractive.png')
+
+block scripts
+  script(src="../javascripts/animatescroll.js")
+  script(src="../javascripts/giraNautLP.js")

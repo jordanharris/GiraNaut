@@ -1,0 +1,254 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+li {
+  display: inline-block;
+}
+#map-canvas {
+  height: 100%;
+}
+.giranaut-cities {
+  width: 100%;
+}
+.citiesButton {
+  padding-top: 15px;
+}
+.giranaut-cities h1 {
+  text-align: center;
+  color: #999;
+  font-size: 30px;
+}
+/*user sidebar*/
+#wrapper {
+  padding-left: 70px;
+  transition: all 0.4s ease 0s;
+  height: 100%;
+  position: absolute;
+}
+#sidebar-wrapper {
+  margin-left: -150px;
+  left: 150px;
+  width: 250px;
+  background: #222;
+  position: fixed;
+  height: 100%;
+  z-index: 5;
+  transition: all 0.4s ease 0s;
+}
+.sidebar-nav {
+  display: block;
+  float: left;
+  width: 150px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#page-content-wrapper {
+  padding-left: 0;
+  margin-left: 0;
+  width: 100%;
+  height: auto;
+}
+#wrapper.active {
+  padding-left: 150px;
+}
+#wrapper.active #sidebar-wrapper {
+  left: -100px;
+}
+#page-content-wrapper {
+  width: 100%;
+}
+#sidebar_menu li a,
+.sidebar-nav li a {
+  color: #999;
+  display: block;
+  float: left;
+  text-decoration: none;
+  width: 310px;
+  -webkit-transition: background 0.5s;
+  -moz-transition: background 0.5s;
+  -o-transition: background 0.5s;
+  -ms-transition: background 0.5s;
+  transition: background 0.5s;
+}
+.sidebar_name {
+  padding-top: 25px;
+  color: #fff;
+  opacity: 0.7;
+}
+.sidebar-nav li {
+  line-height: 40px;
+  text-indent: 20px;
+}
+.sidebar-nav li a {
+  color: #999;
+  display: block;
+  text-decoration: none;
+}
+.sidebar-nav li a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+  text-decoration: none;
+}
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  line-height: 60px;
+  font-size: 18px;
+}
+.sidebar-nav > .sidebar-brand a {
+  color: #999;
+}
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+#menu-toggle {
+  font-size: 28px;
+  font-weight: bold;
+}
+#main_icon {
+  float: right;
+  padding: 6% 7% 6% 0%;
+  margin-top: -1px;
+  background: #252525;
+  font-size: 18px;
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  border-bottom-right-radius: 10px;
+}
+@media (max-width:767px) {
+  #wrapper,
+  padding-left: 70px,
+  transition: all .4s ease 0s,
+  #sidebar-wrapper {
+    left: 70px;
+  }
+  #wrapper.active {
+    padding-left: 150px;
+  }
+  #wrapper.active #sidebar-wrapper {
+    left: 150px;
+    width: 150px;
+    transition: all 0.4s ease 0s;
+  }
+}
+/*end user sidebar*/
+.cachedImages {
+  display: none;
+}
+.circle {
+  border-radius: 10px;
+}
+#guideBio {
+  position: fixed;
+  top: 17%;
+  right: 0px;
+  z-index: 10;
+  background-image: url("../images/blurred.jpeg");
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  overflow: hidden;
+  display: none;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.guideInnerCard {
+  padding: 0px 0px 0px 30px;
+}
+.guideInnerCard img {
+  width: 100px;
+  padding-top: 20px;
+}
+.guideInnerCard span {
+  font-weight: bold;
+}
+.guideInnerCard button {
+  display: block;
+  margin: 0px auto;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+.guideBioImage {
+  height: 100px;
+}
+.scrolling {
+  overflow: auto;
+  max-height: 250px;
+}
+.giranaut-cities button {
+  width: 100%;
+}
+/*messenger css*/
+#chatMessenger {
+  position: absolute;
+  z-index: 10;
+  bottom: 0px;
+  width: 100%;
+  text-align: right;
+  display: none;
+}
+.guideChatBox {
+  text-align: left;
+  display: inline-block;
+  margin-bottom: -5px;
+}
+.row {
+  margin-right: 0px;
+}
+.messengerRight {
+  padding-right: 5px;
+  width: 320px;
+}
+.chat {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.chat li {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px dotted #b3a9a9;
+}
+.chat li.left .chat-body {
+  margin-left: 60px;
+}
+.chat li.right .chat-body {
+  margin-right: 60px;
+}
+.chat li .chat-body p {
+  margin: 0;
+  color: #777;
+}
+.panel .slidedown .glyphicon,
+.chat .glyphicon {
+  margin-right: 5px;
+}
+.panel {
+  margin-bottom: 0px;
+}
+.panel-body {
+  overflow-y: scroll;
+  height: 250px;
+/*display: none*/
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #f5f5f5;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #555;
+}
