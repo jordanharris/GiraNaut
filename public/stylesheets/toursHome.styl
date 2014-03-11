@@ -7,13 +7,19 @@ body
   padding: 0
 
 
+//fix header to the top of the page
+header
+  position: fixed
+  z-index: 10
+
+//end of fixed header
+
 li 
   display: inline-block
 
 
 #map-canvas 
   height: 100% 
-
 
 .giranaut-cities
 //   z-index: 5
@@ -77,7 +83,6 @@ li
 #sidebar_menu li a, .sidebar-nav li a 
     color: #999
     display: block
-    float: left
     text-decoration: none
     width: 310px
     // background: #252525
@@ -136,14 +141,15 @@ li
   font-weight: bold
 
 #main_icon
-  float:right
-  padding: 6% 7% 6% 0%
-  margin-top: -1px
+  position: absolute
+  top: 50px;
+  right: -54px
+  padding: 6% 8% 7% 0%
   background: #252525
   font-size: 18px
-  -webkit-border-bottom-right-radius: 10px;
-  -moz-border-radius-bottomright: 10px;
-  border-bottom-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px
+  -moz-border-radius-bottomright: 10px
+  border-bottom-right-radius: 10px
 
 // .sub_icon
 //   float:right

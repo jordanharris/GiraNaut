@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({
+	provider: String,
 	userid: String,
-	first_name: String,
-	last_name: String,
+	firstName: String,
+	lastName: String,
 	name: String,
 	username: String,
 	displayName: String,
@@ -11,18 +12,16 @@ var userSchema = new mongoose.Schema({
 	picture: String,
 	email: String,
 	gender: String,
-	locale: String,
+	location: String,
 	birthday: String
 })
 
-var signInData = module.exports = {
+var signInData = module.exports = mongoose.model('user',userSchema);
 
-	logInEvent: function(formLogIn){
-		logInArray.push(formLogIn);	
-	},
+	// logInEvent: function(formLogIn){
+	// 	logInArray.push(formLogIn);	
+	// },
 
-	signUpEvent: function(formSignUp){
-		signUpArray.push(formSignUp);
-	}
-
-} 
+	// signUpEvent: function(formSignUp){
+	// 	signUpArray.push(formSignUp);
+	// }
