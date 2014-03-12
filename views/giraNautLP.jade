@@ -44,20 +44,20 @@ block content
               li
                 h1.socialMediaHeading Sign-in
               li
-                a
-                  img.socialMediaImageGiraNaut(src='../images/giranaut.png')
+                a#giraNautSignIn
+                  img.socialMediaImageGiraNaut(src="../images/giraNaut.png")
               li
-                a
-                  img.socialMediaImageTwitter(src='../images/twitter.png')
+                a#twitterSignIn(href="/login/twitter")
+                  img.socialMediaImageTwitter(src="../images/twitter.png")
               li
-                a(href='/login/facebook')
-                 img.socialMediaImageFacebook(src='../images/facebook.png')
-              li
-                a
-                  img.socialMediaImagePinterest(src='../images/pinterest.png')
+                a#facebookSignIn(href='/login/facebook')
+                 img.socialMediaImageFacebook(src="../images/facebook.png")
+              //- li
+              //-   a#pinterstSignIn
+              //-     img.socialMediaImagePinterest(src="../images/pinterest.png")
               li 
-                a(href='/auth/google')
-                  img.socialMediaImageGooglePlus(src='../images/googleplus.png')
+                a#googlePlusSignIn(href='/login/google')
+                  img.socialMediaImageGooglePlus(src="../images/googlePlus.png")
           //
              </div> 
           section.motto.container-fluid

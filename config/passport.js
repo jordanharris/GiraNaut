@@ -1,6 +1,7 @@
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
 var UserSignInModel = require('../Models/signIn');
 
 passport.serializeUser(function(user, done){
@@ -25,7 +26,6 @@ var facebookStrategy = new FacebookStrategy({
 		if(user){
 			return done(err, user);
 		}
-
 		var newUser = new UserSignInModel({
 			provider: profile.provider,
 			userid: profile.id,
@@ -34,7 +34,7 @@ var facebookStrategy = new FacebookStrategy({
 			name: profile._json.name,
 			username: profile.username,
 			displayName: profile.displayName,
-			picture: profile.photos[0].value,
+			picture: 'http://graph.facebook.com/'+profile.username+'/picture?width=300&height=300',
 			email: profile.emails[0].value,
 			gender: profile.gender,
 			location: profile._json.location.name,
@@ -77,5 +77,63 @@ var googleStrategy = new GoogleStrategy({
   		});
     });
 });
+
+//twitterStrategy
+var twitterStrategy = new TwitterStrategy({
+    consumerKey: 'Xn97fOV40TNNlNPsCD8szg',
+    consumerSecret: 'NX2DXWaBzVppRgbTy9JISFkkjNZQcnEm3B0CvZECIBQ',
+    callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
+  }, function(token, tokenSecret, profile, done) {
+  	// console.log(profile);
+
+    UserSignInModel.findOne({ userid: profile.id }, function(err, user) {
+    	if(user){
+      		return done(err, user);
+  		}
+  		var newPhoto = (profile._json.profile_image_url).replace('_normal','');
+  		var newUser = new UserSignInModel({
+  			provider: profile.provider,
+  			userid: profile.id,	
+  			// firstName: profile._json.given_name,
+  			// lastName: profile._json.family_name,
+  			name: profile._json.name,
+  			username: profile.username,
+  			displayName: profile.displayName,
+  			picture: newPhoto,
+  			// email: profile._json.email,
+  			// gender: profile._json.gender,
+  			location:profile._json.location,
+  			// birthday: ,
+  		});
+  		newUser.save(function(err,doc){
+  			return done(err, doc);
+  		});
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 passport.use(facebookStrategy);
 passport.use(googleStrategy);
+passport.use(twitterStrategy);

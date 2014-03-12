@@ -15,6 +15,7 @@ module.exports = {
 	logout: function(req, res){
 		req.logout();
 		res.redirect('/');
+		req.session.isGuide = null;
 	},
 
 	ensureAuthenticated: function(req, res, next){

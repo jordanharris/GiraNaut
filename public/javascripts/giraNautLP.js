@@ -130,55 +130,55 @@ $(function(){
     });
 
 	//hover over/click  social media for image effect
-	$(".socialMediaImageGiraNaut").hover(function(){
-		$(this).attr("src", "../images/giranauthover.png");
-	}, function(){
-		$(this).attr("src", "../images/giranaut.png");
-	});
+	// $(".socialMediaImageGiraNaut").hover(function(){
+	// 	$(this).attr("src", "../images/giranauthover.png");
+	// }, function(){
+	// 	$(this).attr("src", "../images/giranaut.png");
+	// });
 
-	$(".socialMediaImageTwitter").hover(function(){
-		$(this).attr("src", "../images/twitterhover.png");
-	}, function(){
-		$(this).attr("src", "../images/twitter.png");
-	});
+	// $(".socialMediaImageTwitter").hover(function(){
+	// 	$(this).attr("src", "../images/twitterhover.png");
+	// }, function(){
+	// 	$(this).attr("src", "../images/twitter.png");
+	// });
 
-	$(".socialMediaImageFacebook").hover(function(){
-		$(this).attr("src", "../images/facebookhover.png");
-	}, function(){
-		$(this).attr("src", "../images/facebook.png");
-	});
+	// $(".socialMediaImageFacebook").hover(function(){
+	// 	$(this).attr("src", "../images/facebookhover.png");
+	// }, function(){
+	// 	$(this).attr("src", "../images/facebook.png");
+	// });
 
-	$(".socialMediaImagePinterest").hover(function(){
-		$(this).attr("src", "../images/pinteresthover.png");
-	}, function(){
-		$(this).attr("src", "../images/pinterest.png");
-	});
+	// $(".socialMediaImagePinterest").hover(function(){
+	// 	$(this).attr("src", "../images/pinteresthover.png");
+	// }, function(){
+	// 	$(this).attr("src", "../images/pinterest.png");
+	// });
 
-	$(".socialMediaImageGooglePlus").hover(function(){
-		$(this).attr("src", "../images/googleplushover.png");
-	}, function(){
-		$(this).attr("src", "../images/googleplus.png");
-	});
+	// $(".socialMediaImageGooglePlus").hover(function(){
+	// 	$(this).attr("src", "../images/googleplushover.png");
+	// }, function(){
+	// 	$(this).attr("src", "../images/googleplus.png");
+	// });
 
-	$(".socialMediaImageGiraNaut").on("click", function(){
-		$(this).attr("src", "../images/giranautactive.png");
-	});
+	// $(".socialMediaImageGiraNaut").on("click", function(){
+	// 	$(this).attr("src", "../images/giranautactive.png");
+	// });
 
-	$(".socialMediaImageTwitter").on("click", function(){
-		$(this).attr("src", "../images/twitteractive.png");
-	});
+	// $(".socialMediaImageTwitter").on("hover", function(){
+	// 	$(this).attr("src", "../images/twitteractive.png");
+	// });
 
-	$(".socialMediaImageFacebook").on("click", function(){
-		$(this).attr("src", "../images/facebookactive.png");
-	});
+	// $("#fbooklogin").on("click", function(){
+	// 	$(".socialMediaImageFacebook").attr("src", "../images/facebookactive.png");
+	// });
 
-	$(".socialMediaImagePinterest").on("click", function(){
-		$(this).attr("src", "../images/pinterestactive.png");
-	});
+	// $(".socialMediaImagePinterest").on("click", function(){
+	// 	$(this).attr("src", "../images/pinterestactive.png");
+	// });
 
-	$(".socialMediaImageGooglePlus").on("click", function(){
-		$(this).attr("src", "../images/googleplusactive.png");
-	});
+	// $(".socialMediaImageGooglePlus").on("click", function(){
+	// 	$(this).attr("src", "../images/googleplusactive.png");
+	// });
 
 	//clear input values of GiraNaut sign-in modal
 	$('.socialMediaImageGiraNaut').on('click',function(){

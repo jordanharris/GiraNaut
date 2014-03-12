@@ -13,7 +13,12 @@ var userSchema = new mongoose.Schema({
 	email: String,
 	gender: String,
 	location: String,
-	birthday: String
+	birthday: String,
+	isGuide: {
+		type: Boolean,
+		default: false
+	},
+	applicationData: {}
 })
 
 var signInData = module.exports = mongoose.model('user',userSchema);

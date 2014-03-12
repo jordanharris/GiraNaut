@@ -3,7 +3,7 @@
  */
 
 var express = require('express');
-var controllersGiraNaut = require('./Controllers/giraNaut');
+var controllersGiraNaut = require('./Controllers/applicationProcess');
 var controllersTours = require('./Controllers/tours');
 var authController = require('./controllers/authController');
 var http = require('http');
@@ -46,6 +46,11 @@ app.configure(function(){
 
 //passport-facebook
 app.get('/login/facebook', passport.authenticate('facebook', {scope: ['user_birthday', 'email'] }));
+app.get('/apply/facebook', function(req, res, next){
+		req.session.isGuide = true;
+		next();
+	},
+	passport.authenticate('facebook', {scope: ['user_birthday', 'email'] }));
 app.get(
 	'/facebook/callback',
 	passport.authenticate('facebook', {failureRedirect: '/'}),
@@ -53,7 +58,7 @@ app.get(
 );
 
 //passport-google
-app.get('/auth/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login',
+app.get('/login/google', passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login',
                                             'https://www.googleapis.com/auth/userinfo.email'] }));
 app.get(
 	'/auth/google/callback', 
@@ -61,13 +66,22 @@ app.get(
   	authController.loginSuccess
 );
 
+//passport-twitter
+app.get('/login/twitter', passport.authenticate('twitter'));
+app.get(
+	'/auth/twitter/callback', 
+  	passport.authenticate('twitter', {failureRedirect: '/' }),
+  	authController.loginSuccess
+);
+
+
 app.get('/', authController.login);
 app.get('/logout',authController.logout);
 // app.get('/sign-up', controllersGiraNaut.signUp);
 app.get('/apply', controllersGiraNaut.apply);
 app.get('/apply/successful', controllersGiraNaut.applicationSuccessful);
 app.get('/home/:name', authController.ensureAuthenticated, controllersTours.userHome);
-app.get('/guideshome', controllersTours.guidesHome);
+// app.get('/guideshome', controllersTours.guidesHome);
 
 app.post('/apply/submitted', controllersGiraNaut.applicationSubmitted);
 // app.post('/logInSubmission', controllersTours.logIn);
