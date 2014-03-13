@@ -7,20 +7,10 @@ $('#enable').click(function() {
 
 
 $(document).ready(function() {
-    $('#language, #interests, #bio, #specialties').editable({
+    $('#language, #landmarks, #bio, #age').editable({
     	validate: function(value) {
     	    if($.trim(value) === '') return 'This field is required';
-    	}
-    });
-    $('#age').editable({
-    	combodate:{
-    		minYear: 1940,
-    		maxYear: 1997
     	},
-    	validate: function(value) {
-    	    if($.trim(value) === '') return 'This field is required';
-    	}
-    })
-
+    });
 
 });

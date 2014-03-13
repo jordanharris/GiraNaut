@@ -18,6 +18,11 @@ var userSchema = new mongoose.Schema({
 		type: Boolean,
 		default: false
 	},
+	hasApplied: {
+		type: Boolean,
+		default: false
+	},
+
 	applicationData: {}
 })
 

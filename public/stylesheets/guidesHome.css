@@ -27,26 +27,27 @@ li {
   border-radius: 10px;
   min-height: 573px;
 }
+.infoheader {
+  position: relative;
+}
 .guideInformation {
   height: 473px;
   padding-right: 10px;
   overflow: auto;
 }
+.guideInformation a {
+  margin-left: 10px;
+}
+.guideInfoAnswers {
+  margin-top: 5px;
+}
 .cover-heading {
   display: inline-block;
 }
 #enable {
-  position: relative;
-  margin-left: 100px;
-  top: -8px;
-}
-/**/
-.touristMessenger {
-  margin: 10px 0px -20px 0px;
-}
-.chatBody {
-  height: 450px;
-  overflow: scroll;
+  position: absolute;
+  right: 0px;
+  top: 23px;
 }
 /*guide sidebar*/
 #wrapper {
@@ -166,7 +167,7 @@ li {
   width: 100%;
   line-height: 50px;
   margin: 0px 0px 0px 0px;
-  color: #7fffd4;
+  color: #f0f0f0;
   border: 2px solid #222;
   padding: 10px 0px 10px 10px;
   background: #45484d;
@@ -180,4 +181,48 @@ li {
 .chatImage {
   float: right;
   padding: 0px 5px 0px 0px;
+}
+/*chatMessenger with tourists*/
+.chat {
+  padding-left: 10px;
+}
+.touristMessenger {
+  margin: 10px 0px -20px 0px;
+}
+.chatBody {
+  height: 450px;
+  overflow: auto;
+  background-color: #f0f0f0;
+}
+.panel {
+  margin-bottom: 0px;
+}
+.panel-primary {
+  border-color: #999;
+}
+.panel-primary > .panel-heading {
+  background-color: #222;
+  border-color: #222;
+}
+.panel-footer {
+  background-color: #eee;
+}
+#btn-chat {
+  background-color: #999;
+}
+.img-circle {
+  width: 45px;
+  margin: 0px 5px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #f5f5f5;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #555;
 }

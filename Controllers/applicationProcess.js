@@ -9,18 +9,17 @@ var giraNautLP = module.exports = {
 	// },
 
 	apply: function(req, res){
-		res.render('apply');
+		if(req.session.hasApplied){
+			res.render('appSuccess');
+		}
+		else{
+			res.render('apply');
+		}
+		
 	},
 
 	applicationSubmitted: function(req, res){
-		console.log(req.body);
-		// console.log(req.body.user.firstName);
-		// req.user.applicationSubmitted = req.body;
-		// req.user.save(function(err, doc){
-		// 	res.redirect('apply/successful');
-		// 	req.session.isGuide = null;
-		// })
-		res.redirect('/apply/successful');
+		res.render('guideFBoauth');
 	},
 
 	applicationSuccessful: function(req, res){

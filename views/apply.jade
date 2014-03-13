@@ -29,65 +29,65 @@ block content
     .jumbotron
       h1 Becoming a GiraNaut Guide!
       p.lead You're well on your way to becoming the next GiraNaut Guide.  You've taken the intial steps and have a passion to explore your city!  That passion is exactly what GiraNaut is looking for.  We want to make sure that only the most passionate and driven people become Guides, regardless of previous tour guiding experience! To ensure that you share in the same goals and passion as we do at GiraNaut we invite you to fill out the application below!
-    form.form-horizontal(method="post" action="/apply/submitted" role='form')
+    form.form-horizontal(method="post" action="/apply/authenticate" role='form')
         .form-group
           label.col-sm-2.col-sm-offset-1.control-label(for='inputFirstName') First Name:
           .col-sm-6
-            input#inputFirstName.form-control(type='text', name='submitted[firstName]', placeholder='First Name')
+            input#inputFirstName.form-control(type='text', name='firstName', placeholder='First Name')
 
         .form-group
           label.col-sm-2.col-sm-offset-1.control-label(for='inputLastName') Last Name:
           .col-sm-6
-            input#inputLastName.form-control(type='text', name='submitted[lastName]', placeholder='Last Name')
+            input#inputLastName.form-control(type='text', name='lastName', placeholder='Last Name')
 
         .form-group
           label.col-sm-2.col-sm-offset-1.control-label(for='inputEmail') Email:
           .col-sm-6
-            input#inputEmail.form-control(type='email', name='submitted[email]', placeholder='Email')
+            input#inputEmail.form-control(type='email', name='email', placeholder='Email')
 
         .form-group
           label.col-sm-2.col-sm-offset-1.control-label(for='inputCity') City:
           .col-sm-6
-            input#inputCity.form-control(type='text', name='submitted[city]', placeholder='City You Reside In')
+            input#inputCity.form-control(type='text', name='city', placeholder='City You Reside In')
 
         .form-group
           label.col-sm-2.col-sm-offset-1.control-label(for='inputAddress') Phone Number:
           .col-sm-6
-            input#inputAddress.form-control(type='text', name='submitted[phoneNumber]', placeholder='Phone Number (for internal use only)')
+            input#inputAddress.form-control(type='text', name='phoneNumber', placeholder='Phone Number (for internal use only)')
 
         .form-group
           label.col-sm-2.col-sm-offset-1.control-label(for='inputQuestion1') Question 1:
           .col-sm-6
-            textarea#inputQuestion1.form-control(rows="6", name='submitted[question1]', placeholder='Tell us why you think your city is the best city in the world')
+            textarea#inputQuestion1.form-control(rows="6", name='question1', placeholder='Tell us why you think your city is the best city in the world')
 
         .form-group
           label.col-sm-2.col-sm-offset-1.control-label(for='inputQuestion2') Question 2:
           .col-sm-6
-            textarea#inputQuestion2.form-control(rows="6", name='submitted[question2]', placeholder='Tell us why showing your city to the masses is your passion')
+            textarea#inputQuestion2.form-control(rows="6", name='question2', placeholder='Tell us why showing your city to the masses is your passion')
 
         .form-group
           label.col-sm-2.col-sm-offset-1.control-label(for='inputQuestion3') Question 3:
           .col-sm-6
-            textarea#inputQuestion3.form-control(rows="6", name='submitted[question3]', placeholder='Tell us your favorite part of the city')
+            textarea#inputQuestion3.form-control(rows="6", name='question3', placeholder='Tell us your favorite part of the city')
 
         .form-group
           label.col-sm-2.col-sm-offset-1.control-label(for='inputQuestion4') Question 4:
           .col-sm-6
-            textarea#inputQuestion4.form-control(rows="6", name='submitted[question4]', placeholder='If you were a tourist in your city, describe your perfect tour.  Be as creative as you\'d like!')
+            textarea#inputQuestion4.form-control(rows="6", name='question4', placeholder='If you were a tourist in your city, describe your perfect tour.  Be as creative as you\'d like!')
 
         .form-group
           label.col-sm-2.col-sm-offset-1.control-label(for='inputQuestion5') Question 5:
           .col-sm-6
-            textarea#inputQuestion5.form-control(rows="6", name='submitted[question5]', placeholder='What is the most interesting fact about your city that only a local would know')
+            textarea#inputQuestion5.form-control(rows="6", name='question5', placeholder='What is the most interesting fact about your city that only a local would know')
 
         .form-group
           label.col-sm-2.col-sm-offset-1.control-label(for='inputQuestion5') Must be 18 or older:
           .col-sm-1
-            input#inputQuestion5.form-control(type="checkbox" name="submitted[age]")
+            input#inputQuestion5.form-control(type="checkbox" name="age")
 
         .form-group
           .col-sm-offset-5.col-sm-6
-            a.btn.btn-warning(href="apply/facebook", type='submit') Submit Application
+            input.btn.btn-warning(type='submit' value="Submit Application")
     hr
     include footer.jade
 

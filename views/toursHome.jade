@@ -76,11 +76,10 @@ block scripts
           <img src={{image}}></div>
           <h2>{{name}}</h2>
         <div class="scrolling">
-          <p><span>Website:</span> {{website}}</p>
+          <p><span>Age:</span> {{age}}</p>
           {{#with post}}
           <p><span>Languages:</span> {{sentence}}</p>
-          <p><span>Specialties:</span> {{sentence}}</p>
-          <p><span>Interest:</span> {{sentence}}</p>
+          <p><span>Favorite City Landmarks:</span> {{sentence}}</p>
           <p><span>Bio:</span> {{paragraph}}{{paragraph}}{{paragraph}}{{paragraph}}{{paragraph}}{{paragraph}}{{paragraph}}{{paragraph}}{{paragraph}}</p>
         </div>  
         {{/with}}
@@ -183,7 +182,10 @@ block scripts
               </div>
           </div>
       </div>
+  script(type="text/javascript").
+    var guidesData = !{JSON.stringify(bootstrap)}
   script(type="text/javascript", src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC1Mb_Wd80IfGpLGwrJidF599pwNJGtB2s&sensor=true")
+  script(src="../javascripts/gMapsMarkerManipulation.js")
   script(src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js")
   script(src="//jawj.github.io/OverlappingMarkerSpiderfier/bin/oms.min.js")
   script(src="../javascripts/gmapsAPI.js")

@@ -1,19 +1,35 @@
+var gm = require('gm');
 var modelSignIn = require('../Models/signIn');
 
 var toursLP = module.exports = {
 
 	userHome: function(req, res){
-		if(req.session.isGuide){
-			// req.user.isGuide = true;
-			console.log(req.body);
+		if(req.session.isGuide && !(req.user.hasApplied)){
+			req.user.isGuide = true;
+			req.user.applicationData = req.session.applicationData;
+			req.user.hasApplied = req.session.hasApplied;
+			req.user.save(function(err, doc){
+				console.log(err);
+				res.redirect('apply/successful');
+				req.session.isGuide = null;
+			})
+		}
+		else if(req.user.hasApplied && !req.user.isGuide){
 			res.redirect('apply/successful');
-			req.session.isGuide = null;
 		}
 		else if(req.user.isGuide){
 			res.render('guidesHome',{user:req.user})
 		}
 		else{
-			res.render('toursHome',{user:req.user});
+			var allGuides = modelSignIn.find({ isGuide: true }, function (err, docs) {
+				// for (var i = 0; i < docs.length; i++) {
+				// 	docs[i].picture = JSON.stringify(gm(docs[i].picture).resize(50)); 
+				// };
+				res.render('toursHome',{
+				user:req.user,
+				bootstrap: docs
+				});	
+			});
 		}
 	},
 

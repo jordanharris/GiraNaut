@@ -1,0 +1,16 @@
+extends layout
+
+block stylesheets
+  link(rel='stylesheet', href='/stylesheets/appSuccess.css')
+
+block content
+  .container
+    .jumbotron
+      h1 One Last Step!
+      h3.lead.instructions Please authenticate your application by logging in with Facebook below!
+      p
+        a(href="/apply/facebook")
+          img(src="../images/facebookAuth.png")
+
+
+block scripts

@@ -16,6 +16,8 @@ module.exports = {
 		req.logout();
 		res.redirect('/');
 		req.session.isGuide = null;
+		req.session.applicationData = null;
+		// req.session.destroy();
 	},
 
 	ensureAuthenticated: function(req, res, next){

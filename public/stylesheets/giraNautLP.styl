@@ -1,12 +1,13 @@
 body
-  font-size: 12px
-  background: rgb(240,249,255)
-  background: -moz-radial-gradient(center, ellipse cover, rgba(240,249,255,1) 0%, rgba(203,235,255,1) 47%, rgba(161,219,255,1) 100%)
-  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(240,249,255,1)), color-stop(47%,rgba(203,235,255,1)), color-stop(100%,rgba(161,219,255,1)))
-  background: -webkit-radial-gradient(center, ellipse cover, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%)
-  background: -o-radial-gradient(center, ellipse cover, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%)
-  background: -ms-radial-gradient(center, ellipse cover, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%)
-  background: radial-gradient(ellipse at center, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%)
+  font-size: 14px
+  background-color: #f0f0f0
+  // background: rgb(240,249,255)
+  // background: -moz-radial-gradient(center, ellipse cover, rgba(240,249,255,1) 0%, rgba(203,235,255,1) 47%, rgba(161,219,255,1) 100%)
+  // background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(240,249,255,1)), color-stop(47%,rgba(203,235,255,1)), color-stop(100%,rgba(161,219,255,1)))
+  // background: -webkit-radial-gradient(center, ellipse cover, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%)
+  // background: -o-radial-gradient(center, ellipse cover, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%)
+  // background: -ms-radial-gradient(center, ellipse cover, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%)
+  // background: radial-gradient(ellipse at center, rgba(240,249,255,1) 0%,rgba(203,235,255,1) 47%,rgba(161,219,255,1) 100%)
   // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=1 )
 
 a
@@ -62,6 +63,9 @@ h1, h2, h3, h4
 .dropdown-menu
   background-color: #5ED
 
+#giraNautLogo
+  color: #f0f0f0
+
 /*begin of section mottos*/
 .appStoreIcon
   position: relative
@@ -71,8 +75,7 @@ h1, h2, h3, h4
 .banner, .banners
   position: relative
   top: 70px
-  background-color: #000
-  opacity: .8
+  background-color: rgba(0,0,0,.8)
   padding: 10px 10px 10px 20px
   border-bottom-right-radius: 10px
   border-top-right-radius: 10px
@@ -85,6 +88,12 @@ h1, h2, h3, h4
 
 .motto
   margin-top: 100px
+
+.homeMotto
+  color: #f0f0f0
+
+.appMotto
+  color: #f0f0f0
 
 .buttons
   text-shadow:none
@@ -131,9 +140,9 @@ h1, h2, h3, h4
   padding: 0px 15px 0px 15px
 
 .socialMediaHeading
-  font-size: 1.3em
-  color: rgba(192, 57, 43,1.0)
-  font-family: "Comic Sans MS", cursive, sans-serif
+  font-size: 1.7em
+  color: #f0f0f0
+  font-family: arial
 
 .socialMediaSignUp
   position: fixed
@@ -144,8 +153,9 @@ h1, h2, h3, h4
   border-radius: 50%
   width: 45px
   height: 45px
-  padding: 3px
+  padding: 0px
   cursor: pointer
+  margin-top: 10px
 
 #giraNautSignIn:hover > img
   content: url("../images/giranauthover.png")
@@ -188,6 +198,10 @@ h1, h2, h3, h4
   padding: 0px 11px 10px 10px
   font-size: 20px
   border: none
+  color: lightgreen
+
+.exploreGiraNaut:hover
+  color:  #f0f0f0
 
 .centered-form
   margin-top: 60px
@@ -207,7 +221,7 @@ h1, h2, h3, h4
   min-height: 500px
 
 .carousel
-  max-width: 80%
+  // max-width: 80%
   margin: 0px auto
 
 .carousel-caption p
@@ -219,6 +233,10 @@ h1, h2, h3, h4
 .touristGNDescription
   text-align: center
 
+.descriptionSubheading
+  text-align: left
+  line-height: 24px
+  font-size: 16px
 
 /*section tour guides*/
 
@@ -285,6 +303,7 @@ h1, h2, h3, h4
 
 .sectionHeader
   margin:0px 0px 0px 0px
+  text-align: center
 
 .faq-cat-content
     margin-top: 25px

@@ -62,22 +62,33 @@
 		function calculateCenter() {
 		  center = map.getCenter();
 		}
-		
         //creates the marker that is to be placed
         function markerCreate(arrImages,arrLatLng ){
-        	
         	for(var i=0; i < arrLatLng.length; i++ ){
-        		for(var j = 0; j<arrImages.length ; j++){
-        			var guideData = fakeGuides[j+(i*arrImages.length)];
-			        var marker = new google.maps.Marker({
+        		for(var j = 0; j<guidesData.length ; j++){
+        			var guideData = fakeGuides[j+(i*guidesData.length)];
+        			var image = {
+        			    url: 'http://graph.facebook.com/jordanharrisburrows/picture?width=300&height=300',
+        			    // This marker is 20 pixels wide by 32 pixels tall.
+        			    scaledSize: new google.maps.Size(50, 50),
+        			    // The origin for this image is 0,0.
+        			    origin: new google.maps.Point(0,0),
+        			    // The anchor for this image is the base of the flagpole at 0,32.
+        			    // anchor: new google.maps.Point(0, 32)
+        			};
+        			var div = document.createElement('DIV');
+        			div.innerHTML = '<div class="guideMarkers"><img class="guideMarkersImage" src='+guidesData[j].picture+'></div>';
+			        var marker = new RichMarker({
 			            position: arrLatLng[i].locate,
 			            map: map,
-			            icon: arrImages[j].image,
+			            // icon: image,
+			            flat: false,
 			            animation: google.maps.Animation.DROP,
-			            draggable: true
+			            draggable: false,
+			            content: div
 			        });
 			        oms.addMarker(marker);
-			        guideData.image = marker.icon;
+			        guideData.image = guidesData[j].picture;
 	        		(function(marker, guideData){
 			  			google.maps.event.addListener(marker, 'click', function() {
 			  				var chris = guideTemplate(guideData);

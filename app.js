@@ -6,6 +6,7 @@ var express = require('express');
 var controllersGiraNaut = require('./Controllers/applicationProcess');
 var controllersTours = require('./Controllers/tours');
 var authController = require('./controllers/authController');
+var guidesController = require('./controllers/guidesController');
 var http = require('http');
 var path = require('path');
 var passport = require('passport');
@@ -83,8 +84,12 @@ app.get('/apply/successful', controllersGiraNaut.applicationSuccessful);
 app.get('/home/:name', authController.ensureAuthenticated, controllersTours.userHome);
 // app.get('/guideshome', controllersTours.guidesHome);
 
-app.post('/apply/submitted', controllersGiraNaut.applicationSubmitted);
-// app.post('/logInSubmission', controllersTours.logIn);
+app.post('/apply/authenticate',function(req, res, next){
+		req.session.applicationData = req.body;
+		req.session.hasApplied = true;
+		next();
+	}, controllersGiraNaut.applicationSubmitted);
+app.post('/guide/update', guidesController.update);
 // app.post('/signUpSubmission', controllersTours.signUp);
 
 
