@@ -1,6 +1,10 @@
 li {
   list-style-type: none;
 }
+/*header*/
+#giraNautLogo {
+  color: #f0f0f0;
+}
 /*statistics modal*/
 .statisticsModal {
   background: #252525;
@@ -30,6 +34,12 @@ li {
 .infoheader {
   position: relative;
 }
+#profileImage {
+  width: 150px;
+  border-radius: 50%;
+  position: absolute;
+  right: 15px;
+}
 .guideInformation {
   height: 473px;
   padding-right: 10px;
@@ -40,14 +50,20 @@ li {
 }
 .guideInfoAnswers {
   margin-top: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+.guideInfoAnswers a {
+  font-size: 16px;
+  color: #028482;
 }
 .cover-heading {
   display: inline-block;
+  margin-top: 65px;
 }
 #enable {
   position: absolute;
-  right: 0px;
-  top: 23px;
+  left: 0px;
 }
 /*guide sidebar*/
 #wrapper {
@@ -70,6 +86,7 @@ li {
   list-style: none;
   margin: 0;
   padding: 0;
+  margin-top: 53px;
 }
 #page-content-wrapper {
   padding-left: 0;
@@ -157,7 +174,7 @@ li {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.messageQueue {
+#messageQueue {
   padding: 0px 0px 0px 0px;
 }
 .chatName {

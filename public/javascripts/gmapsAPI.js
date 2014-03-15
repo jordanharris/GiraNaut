@@ -66,16 +66,16 @@
         function markerCreate(arrImages,arrLatLng ){
         	for(var i=0; i < arrLatLng.length; i++ ){
         		for(var j = 0; j<guidesData.length ; j++){
-        			var guideData = fakeGuides[j+(i*guidesData.length)];
-        			var image = {
-        			    url: 'http://graph.facebook.com/jordanharrisburrows/picture?width=300&height=300',
-        			    // This marker is 20 pixels wide by 32 pixels tall.
-        			    scaledSize: new google.maps.Size(50, 50),
-        			    // The origin for this image is 0,0.
-        			    origin: new google.maps.Point(0,0),
-        			    // The anchor for this image is the base of the flagpole at 0,32.
-        			    // anchor: new google.maps.Point(0, 32)
-        			};
+        			// var guideData = fakeGuides[j+(i*guidesData.length)];
+        			// var image = {
+        			//     url: 'http://graph.facebook.com/jordanharrisburrows/picture?width=300&height=300',
+        			//     // This marker is 20 pixels wide by 32 pixels tall.
+        			//     scaledSize: new google.maps.Size(50, 50),
+        			//     // The origin for this image is 0,0.
+        			//     origin: new google.maps.Point(0,0),
+        			//     // The anchor for this image is the base of the flagpole at 0,32.
+        			//     // anchor: new google.maps.Point(0, 32)
+        			// };
         			var div = document.createElement('DIV');
         			div.innerHTML = '<div class="guideMarkers"><img class="guideMarkersImage" src='+guidesData[j].picture+'></div>';
 			        var marker = new RichMarker({
@@ -88,14 +88,14 @@
 			            content: div
 			        });
 			        oms.addMarker(marker);
-			        guideData.image = guidesData[j].picture;
+			        // guideData.image = guidesData[j].picture;
 	        		(function(marker, guideData){
 			  			google.maps.event.addListener(marker, 'click', function() {
 			  				var chris = guideTemplate(guideData);
 			  				$("#guideBio").css("display","block");
 		      				$('#guideBio').html(chris);
 			    		});
-			    	})(marker, guideData);
+			    	})(marker, guidesData[j]);
 			    	
 		    	}
 		    }
@@ -132,102 +132,102 @@
 
 
         //google maps styling of maps object:	
-	    var stylers = [
-	    	{
-	   		"featureType": "transit",
-	    	"stylers": [{ 
-	    		"visibility": "off" 
-	    	}]
-	  		},
-	  		{
-	    	"featureType": "road",
-	    	"stylers": [{
-	    		"visibility": "simplified" 
-	    	}]
-	  		},
-	  		{
-	    	"featureType": "landscape",
-	    	"elementType": "labels",
-	    	"stylers": [{
-	    		"visibility": "off" 
-	    	}]
-	  		},
-	  		{
-	  		"featureType": "landscape.natural.terrain",
-	  		"elementType": "geometry",
-	  		"stylers": [{
-	  			"visibility": "on" 
-	  		}]
-	  		},
-	  		{
-	    	"featureType": "poi",
-	    	"stylers": [{
-	    		"visibility": "off" 
-	    	}]
-	  		},
-	  		{
-	    	"featureType": "water",
-	    	"stylers": [{
-	    		"visibility": "simplified" 
-	    	}]
-			},
-			{
-	    	"featureType": "road",
-	    	"elementType": "labels",
-	    	"stylers": [{
-	    		"visibility": "off" 
-	    	}]
-	  		},
-	  		{
-	    	"featureType": "administrative.land_parcel",
-	    	"stylers": [{
-	    		"visibility": "off" 
-	    	}]
-	  		},
-	  		{
-	    	"featureType": "administrative.neighborhood",
-	    	"stylers": [{
-	    		"visibility": "off" 
-	    	}]
-	  		},
-	  		{
-	    	"featureType": "administrative.province",
-	    	"stylers": [{
-	    		"visibility": "off" 
-	    	}]
-	  		},
-	  		{
-	    	"featureType": "administrative",
-	    	"elementType": "geometry",
-	    	"stylers": [{
-	    		"visibility": "off" 
-	    	}]
-	  		},
-	  		{
-	    	"featureType": "water",
-	    	"elementType": "geometry",
-	    	"stylers": [{
-	    		"color": "#99f4ff" 
-	    	}]
-	  		},
-	  		{
-	    	"featureType": "landscape",
-	    	"stylers": [{
-	    		"color": "#31a745" 
-	    	}]
-	  		},
-	  		{
-	    	"elementType": "labels",
-	    	"stylers": [{
-	    		"weight": 0.7 
-	    	},
-	      	{
-	      		"color": "#333333" 
-	      	}]
-	  		}
-		]
+	    // var stylers = [
+	  //   	{
+	  //  		"featureType": "transit",
+	  //   	"stylers": [{ 
+	  //   		"visibility": "off" 
+	  //   	}]
+	  // 		},
+	  // 		{
+	  //   	"featureType": "road",
+	  //   	"stylers": [{
+	  //   		"visibility": "simplified" 
+	  //   	}]
+	  // 		},
+	  // 		{
+	  //   	"featureType": "landscape",
+	  //   	"elementType": "labels",
+	  //   	"stylers": [{
+	  //   		"visibility": "off" 
+	  //   	}]
+	  // 		},
+	  // 		{
+	  // 		"featureType": "landscape.natural.terrain",
+	  // 		"elementType": "geometry",
+	  // 		"stylers": [{
+	  // 			"visibility": "on" 
+	  // 		}]
+	  // 		},
+	  // 		{
+	  //   	"featureType": "poi",
+	  //   	"stylers": [{
+	  //   		"visibility": "off" 
+	  //   	}]
+	  // 		},
+	  // 		{
+	  //   	"featureType": "water",
+	  //   	"stylers": [{
+	  //   		"visibility": "simplified" 
+	  //   	}]
+			// },
+			// {
+	  //   	"featureType": "road",
+	  //   	"elementType": "labels",
+	  //   	"stylers": [{
+	  //   		"visibility": "off" 
+	  //   	}]
+	  // 		},
+	  // 		{
+	  //   	"featureType": "administrative.land_parcel",
+	  //   	"stylers": [{
+	  //   		"visibility": "off" 
+	  //   	}]
+	  // 		},
+	  // 		{
+	  //   	"featureType": "administrative.neighborhood",
+	  //   	"stylers": [{
+	  //   		"visibility": "off" 
+	  //   	}]
+	  // 		},
+	  // 		{
+	  //   	"featureType": "administrative.province",
+	  //   	"stylers": [{
+	  //   		"visibility": "off" 
+	  //   	}]
+	  // 		},
+	  // 		{
+	  //   	"featureType": "administrative",
+	  //   	"elementType": "geometry",
+	  //   	"stylers": [{
+	  //   		"visibility": "off" 
+	  //   	}]
+	  // 		}
+	  		// {
+	    // 	"featureType": "water",
+	    // 	"elementType": "geometry",
+	    // 	"stylers": [{
+	    // 		"color": "#99f4ff" 
+	    // 	}]
+	  		// },
+	  		// {
+	    // 	"featureType": "landscape",
+	    // 	"stylers": [{
+	    // 		"color": "#31a745" 
+	    // 	}]
+	  		// },
+	  		// {
+	    // 	"elementType": "labels",
+	    // 	"stylers": [{
+	    // 		"weight": 0.7 
+	    // 	}
+	    //   	{
+	    //   		"color": "#333333" 
+	    //   	}]
+	  		// }
+		// ]
 		//calls setOptions and makes map styles to styles listed above:
-		map.setOptions({styles: stylers});
+		// map.setOptions({styles: stylers});
 
 		//google listener to calculate center of map when window is idle
 		google.maps.event.addDomListener(map, 'idle', function() {

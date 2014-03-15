@@ -1,0 +1,116 @@
+script#guideBioCard(type="text/x-handlebars-template").
+  <div class="row">
+    <div class="guideInnerCard col-md-12">
+      <div class="guideBioImage">
+        <img src={{picture}}>
+      </div>
+      <h2>{{name}}</h2>
+      <div class="scrolling">
+        <p><span>Age:</span> {{age}}</p>
+        <p><span>Languages:</span> {{language}}</p>
+        <p><span>Favorite City Landmarks:</span> {{landmarks}}</p>
+        <p><span>Bio:</span> {{bio}}</p>
+      </div>
+      <button class="btn btn-info guideChatButton" data-id={{_id}} >Chat With Guide</button>
+    </div>
+  </div>
+
+script#guideChatMessenger(type="text/x-handlebars-template").
+    <div class="row touristMessenger chatWindow" data-id="{{sender}}">
+        <div class="col-md-2 col-lg-2 messengerRight">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span> {{name}}</span>
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs chevronButton" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-chevron-down"></span> 
+                        </button>
+                        <button type="button" class="btn btn-default btn-xs removeButton" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-remove"></span> 
+                        </button>
+                    </div>
+                </div>
+                <div class="panelMessage">
+                  <div class="panel-body chatBody">
+                      <ul class="chat">
+                          
+                      </ul>
+                  </div>
+                  <div class="panel-footer">
+                      <div class="input-group">
+                          <input id="btn-input" type="text" class="form-control input-sm messageBox" placeholder="Type your message here..." />
+                          <span class="input-group-btn">
+                              <button class="btn btn-warning btn-sm btn-chat" id="">Send</button>
+                          </span>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+script#touristChatMessenger(type="text/x-handlebars-template").
+  <div class="row touristMessenger chatWindow" data-id="{{senderID}}">
+      <div class="col-md-12 col-lg-12 messengerRight">
+          <div class="panel panel-primary">
+              <div class="panel-heading">
+                  <span> {{name}}</span>
+                  <div class="btn-group pull-right">
+                      <button type="button" class="btn btn-default btn-xs removeButton" data-toggle="dropdown">
+                          <span class="glyphicon glyphicon-remove"></span> 
+                      </button>
+                  </div>
+              </div>
+              <div class="panel-body chatBody">
+                  <ul class="chat">
+                  </ul>
+              </div>
+              <div class="panel-footer">
+                  <div class="input-group">
+                      <input id="btn-input" type="text" class="form-control input-sm messageBox" placeholder="Type your message here..." />
+                      <span class="input-group-btn">
+                          <button class="btn btn-warning btn-sm btn-chat" id="">Send</button>
+                      </span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+script#incomingMessage(type="text/x-handlebars-template").
+  <li class="left clearfix">
+    <span class="chat-img pull-left">
+        <img src={{image}} alt="User Avatar" class="img-circle" />
+    </span>
+      <div class="chat-body clearfix">
+          <div class="header">
+              <strong class="primary-font">{{name}}</strong>
+              <small class="pull-right text-muted">
+                  <span class="glyphicon glyphicon-time"></span>12 mins ago
+              </small>
+          </div>
+          <p>
+              {{message}}
+          </p>
+      </div>
+  </li>
+
+script#outgoingMessage(type="text/x-handlebars-template").
+  <li class="right clearfix"><span class="chat-img pull-right">
+      <img src={{image}} alt="User Avatar" class="img-circle" />
+  </span>
+      <div class="chat-body clearfix">
+          <div class="header">
+              <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago
+              </small>
+              <strong class="pull-right primary-font">{{name}}</strong>
+          </div>
+          <p>
+              {{message}}
+          </p>
+      </div>
+  </li>
+
+script#chatInbox(type="text/x-handlebars-template").
+  <li class="chatName chatSidebar" data-id="{{senderID}}">{{name}}</li>
+    <img class="chatImage" src="{{picture}}">

@@ -216,12 +216,16 @@ h4 {
   line-height: 24px;
   font-size: 16px;
 }
+.guideSubheading {
+  height: 175px;
+}
 /*section tour guides*/
 .subHeadingsAlignment {
   text-align: center;
 }
 .applicationProcessButton {
   text-align: center;
+  margin-top: 30px;
 }
 /* MARKETING CONTENT
 -------------------------------------------------- */

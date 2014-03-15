@@ -22,7 +22,22 @@ var userSchema = new mongoose.Schema({
 		type: Boolean,
 		default: false
 	},
-
+	age:{
+		type: Number,
+		default: 21
+	},
+	language:{
+		type: String,
+		default: 'Fluent In'
+	},
+	landmarks:{
+		type: String,
+		default: 'Favorite City Landmark'
+	},
+	bio:{
+		type: String,
+		default: 'About me'
+	},
 	applicationData: {}
 })
 

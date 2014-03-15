@@ -7,10 +7,12 @@ var controllersGiraNaut = require('./Controllers/applicationProcess');
 var controllersTours = require('./Controllers/tours');
 var authController = require('./controllers/authController');
 var guidesController = require('./controllers/guidesController');
+var chatController = require('./controllers/chatController');
 var http = require('http');
 var path = require('path');
 var passport = require('passport');
 var passportConfig = require('./config/passport');
+var socketio = require('socket.io');
 var mongoose = require('mongoose');
 
 var app = express();
@@ -82,6 +84,7 @@ app.get('/logout',authController.logout);
 app.get('/apply', controllersGiraNaut.apply);
 app.get('/apply/successful', controllersGiraNaut.applicationSuccessful);
 app.get('/home/:name', authController.ensureAuthenticated, controllersTours.userHome);
+app.get('/userDoc', chatController.find);
 // app.get('/guideshome', controllersTours.guidesHome);
 
 app.post('/apply/authenticate',function(req, res, next){
@@ -92,8 +95,37 @@ app.post('/apply/authenticate',function(req, res, next){
 app.post('/guide/update', guidesController.update);
 // app.post('/signUpSubmission', controllersTours.signUp);
 
+//Create Server
+var server = http.createServer(app);
+
+// sets the log level of socket.io, with
+// log level 2 we wont see all the heartbits
+// of each socket but only the handshakes and
+// disconnections
+// io.set('log level', 2);
+
+// setting the transports by order, if some client
+// is not supporting 'websockets' then the server will
+// revert to 'xhr-polling' (like Comet/Long polling).
+// for more configurations go to:
+// https://github.com/LearnBoost/Socket.IO/wiki/Configuring-Socket.IO
+// io.set('transports', [ 'websocket', 'xhr-polling' ]);
+
+//Start the web socket server
+var io = socketio.listen(server);
+
+var users = {}
+
+//If the client just connected
+io.sockets.on('connection', function(socket) {
+	save.authenticate grab user session
+	socket.on('message', function(data){
+		// console.log(data)
+	 	socket.broadcast.emit('message', data);
+	});
+});
 
 
-http.createServer(app).listen(app.get('port'), function(){
+server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

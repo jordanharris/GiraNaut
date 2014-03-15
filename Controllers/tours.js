@@ -1,4 +1,3 @@
-var gm = require('gm');
 var modelSignIn = require('../Models/signIn');
 
 var toursLP = module.exports = {

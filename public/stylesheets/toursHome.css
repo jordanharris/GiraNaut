@@ -16,6 +16,21 @@ li {
 #map-canvas {
   height: 100%;
 }
+/*header*/
+#giraNautLogo {
+  color: #fff;
+}
+/*guide rendered image on page*/
+.guideMarkers {
+  width: 0px;
+  height: 0px;
+}
+.guideMarkersImage {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+/*user sidebar*/
 .giranaut-cities {
   width: 100%;
 }
@@ -26,17 +41,6 @@ li {
   text-align: center;
   color: #999;
   font-size: 30px;
-}
-/*user sidebar*/
-/*guide rendered image on page*/
-.guideMarkers {
-  width: 0px;
-  height: 0px;
-}
-.guideMarkersImage {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
 }
 #wrapper {
   padding-left: 70px;
@@ -79,10 +83,8 @@ li {
 }
 #sidebar_menu li a,
 .sidebar-nav li a {
-  color: #999;
   display: block;
   text-decoration: none;
-  width: 310px;
   -webkit-transition: background 0.5s;
   -moz-transition: background 0.5s;
   -o-transition: background 0.5s;
@@ -124,9 +126,21 @@ li {
   color: #fff;
   background: none;
 }
+.citiesServedHeader {
+  margin-top: 50px;
+}
+.citiesServedHeader:first-child {
+  color: #aaa;
+}
+.touristName {
+  margin-top: 0px;
+  margin-bottom: 90px;
+}
 #menu-toggle {
-  font-size: 28px;
-  font-weight: bold;
+  margin-top: 55px;
+  text-align: center;
+  width: 150%;
+  color: #fff;
 }
 #main_icon {
   position: absolute;
@@ -233,6 +247,10 @@ li {
   padding-bottom: 5px;
   border-bottom: 1px dotted #b3a9a9;
 }
+li.right.clearfix,
+li.left.clearfix {
+  width: 256px;
+}
 .chat li.left .chat-body {
   margin-left: 60px;
 }
@@ -266,7 +284,7 @@ li {
 .panel-footer {
   background-color: #eee;
 }
-#btn-chat {
+.btn-chat {
   background-color: #999;
 }
 .img-circle {
