@@ -8,7 +8,7 @@ var toursLP = module.exports = {
 			req.user.applicationData = req.session.applicationData;
 			req.user.hasApplied = req.session.hasApplied;
 			req.user.save(function(err, doc){
-				console.log(err);
+				// console.log(err);
 				res.redirect('apply/successful');
 				req.session.isGuide = null;
 			})

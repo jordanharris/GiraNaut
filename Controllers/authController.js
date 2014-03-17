@@ -17,8 +17,9 @@ module.exports = {
 		res.redirect('/');
 		req.session.isGuide = null;
 		req.session.applicationData = null;
+		// console.log(req.session)
 		req.session.destroy();
-		console.log(req.session)
+		// console.log(req.session)
 	},
 
 	ensureAuthenticated: function(req, res, next){

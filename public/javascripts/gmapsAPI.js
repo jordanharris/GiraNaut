@@ -9,7 +9,7 @@
         	streetViewControl: false,
         	mapTypeControl: false,
         	zoomControl: false,
-        	draggable: false,
+        	draggable: true,
         };
         //variable declaring center on window resize
         var center;
@@ -17,8 +17,11 @@
         //creates the google map api
         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
+        //creates the google geocoder API
+        var geocoder = new google.maps.Geocoder();
+
         //create ovrelapping markers plug-in that separates markers that are on the same latLng
-        var oms = new OverlappingMarkerSpiderfier(map);
+        var oms = new OverlappingMarkerSpiderfier(map, {keepSpiderfied: true});
         var iw = new google.maps.InfoWindow();
 		// oms.addListener('click', function(marker, event) {
 		// 	iw.setContent(marker.desc);
@@ -31,13 +34,13 @@
 
         //Create static markers on the map when map loads
         //creates variable of marker images to be used when the marker is placed
-        var markerImages = [
-        	{image: $("#jencon").attr("src")},
-        	{image: $("#limacon").attr("src")},
-        	{image: $("#rosiecon").attr("src")},
-        	{image: $("#arleniscon").attr("src")},
-        	{image: $("#jarahcon").attr("src")}
-        ];
+        // var markerImages = [
+        // 	{image: $("#jencon").attr("src")},
+        // 	{image: $("#limacon").attr("src")},
+        // 	{image: $("#rosiecon").attr("src")},
+        // 	{image: $("#arleniscon").attr("src")},
+        // 	{image: $("#jarahcon").attr("src")}
+        // ];
 
         //list of cities and their LatLng positions that giranaut has launched in
   		var markerLatLng = [
@@ -64,41 +67,45 @@
 		}
         //creates the marker that is to be placed
         function markerCreate(arrImages,arrLatLng ){
-        	for(var i=0; i < arrLatLng.length; i++ ){
+        	// for(var i=0; i < arrLatLng.length; i++ ){
         		for(var j = 0; j<guidesData.length ; j++){
         			// var guideData = fakeGuides[j+(i*guidesData.length)];
-        			// var image = {
-        			//     url: 'http://graph.facebook.com/jordanharrisburrows/picture?width=300&height=300',
-        			//     // This marker is 20 pixels wide by 32 pixels tall.
-        			//     scaledSize: new google.maps.Size(50, 50),
-        			//     // The origin for this image is 0,0.
-        			//     origin: new google.maps.Point(0,0),
-        			//     // The anchor for this image is the base of the flagpole at 0,32.
-        			//     // anchor: new google.maps.Point(0, 32)
-        			// };
-        			var div = document.createElement('DIV');
-        			div.innerHTML = '<div class="guideMarkers"><img class="guideMarkersImage" src='+guidesData[j].picture+'></div>';
-			        var marker = new RichMarker({
-			            position: arrLatLng[i].locate,
-			            map: map,
-			            // icon: image,
-			            flat: false,
-			            animation: google.maps.Animation.DROP,
-			            draggable: false,
-			            content: div
-			        });
-			        oms.addMarker(marker);
-			        // guideData.image = guidesData[j].picture;
-	        		(function(marker, guideData){
-			  			google.maps.event.addListener(marker, 'click', function() {
-			  				var chris = guideTemplate(guideData);
-			  				$("#guideBio").css("display","block");
-		      				$('#guideBio').html(chris);
-			    		});
-			    	})(marker, guidesData[j]);
-			    	
+        			var address = guidesData[j].applicationData.address+" "+guidesData[j].applicationData.city+", "+guidesData[j].applicationData.state+" "+guidesData[j].applicationData.country;
+        			geocode(guidesData[j],address);
 		    	}
-		    }
+	    }
+	    function geocode(data, address){
+	    	var div = document.createElement('DIV');
+	    	div.innerHTML = '<div class="guideMarkers"><img class="guideMarkersImage" src='+data.picture+'></div>';
+	    	geocoder.geocode( { 'address': address}, function(results, status) {
+        				 if (status == google.maps.GeocoderStatus.OK) {
+					        // var location = results[0].geometry.location;
+					        // var image = {
+					        // 	origin: new google.maps.Point(0,0),
+					        // 	anchor: new google.maps.Point(0, 32)
+					        // 	}; 
+					        var marker = new RichMarker({
+					            position: results[0].geometry.location,
+					            map: map,
+					            // icon: image,
+					            flat: false,
+					            animation: google.maps.Animation.DROP,
+					            draggable: true,
+					            content: div
+				        	});
+				        	oms.addMarker(marker);
+				        
+		        			(function(marker, guideData){
+				  				google.maps.event.addListener(marker, 'click', function() {
+				  					var chris = guideTemplate(guideData);
+				  					$("#guideBio").css("display","block");
+			      					$('#guideBio').html(chris);
+				    			});
+				    		})(marker, data);
+					      } else {
+					        alert("Geocode was not successful for the following reason: " + status);
+					      }
+        			});	
 	    }
 
         //click handler to zoom in on city after button has been clicked
@@ -126,7 +133,7 @@
 		// });
 
 	    //calls the create marker function and places markers on the map
-	    markerCreate(markerImages, markerLatLng);
+	    markerCreate()//(markerImages, markerLatLng);
 
 
 

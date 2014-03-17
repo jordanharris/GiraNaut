@@ -8,3 +8,11 @@ body {
   background: -ms-radial-gradient(center, ellipse cover, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%);
   background: radial-gradient(ellipse at center, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%);
 }
+.applyWrapper {
+  margin-top: 65px;
+  margin-bottom: 25px;
+  padding-right: 40px;
+}
+.applyHeader {
+  text-align: center;
+}

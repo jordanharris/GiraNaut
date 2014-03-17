@@ -9,7 +9,10 @@ var userSchema = new mongoose.Schema({
 	username: String,
 	displayName: String,
 	profile: Object,
-	picture: String,
+	picture: {
+		type: String,
+		default: "http://lorempixel.com/200/200/nature/1"
+	},
 	email: String,
 	gender: String,
 	location: String,

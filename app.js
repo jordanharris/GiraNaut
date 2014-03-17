@@ -14,6 +14,7 @@ var passport = require('passport');
 var passportConfig = require('./config/passport');
 var socketio = require('socket.io');
 var mongoose = require('mongoose');
+var cookie = require('cookie');
 
 var app = express();
 
@@ -32,6 +33,10 @@ app.use(express.cookieParser());
 app.use(express.session({secret: 'passport secret'}));
 app.use(passport.initialize());
 app.use(passport.session());
+// app.use(function (req, res) {
+// 	console.log(req.cookies);
+//         // res.send('<h2>Hello, your session id is ' + req.session + '</h2>');
+//     });
 
 
 app.use(app.router);
@@ -118,9 +123,14 @@ var users = {}
 
 //If the client just connected
 io.sockets.on('connection', function(socket) {
-	save.authenticate grab user session
+	console.log("test:" +this.socket.sessionID);
+
+	  // send the clients id to the client itself.
+	  // socket.send(socket.id);
+	// save.authenticate grab user session
+	// console.log(touristData.firstName)
 	socket.on('message', function(data){
-		// console.log(data)
+		// console.log(socket.id, data.senderID);
 	 	socket.broadcast.emit('message', data);
 	});
 });
