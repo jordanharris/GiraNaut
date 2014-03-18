@@ -41,24 +41,29 @@ $(function(){
 	});
 
 	socket.on("message",function(data){
-		console.log(data);
-		if($('.chatSidebar[data-id='+data.senderID+']').length < 1){
-			$("#messageQueue").append(chatInboxTemplate({name: data.name, message: data.message, senderID: data.senderID, image: data.image}));
+		// console.log(data);
+		if($('.chatSidebar[data-id='+data.from+']').length < 1){
+			$("#messageQueue").append(chatInboxTemplate({name: data.name, message: data.message, from: data.from, image: data.image}));
 			appendMessages(data);
 			getIncomingMessage(data);
-			$('.touristChatBox').css('display','none');
+			$('.chatWindow[data-id='+data.from+']').closest('.touristChatBox').hide();
 		}
 		else{
 			getIncomingMessage(data);
+			$('.chatBody').scrollTop($('.chat').height());
 		}
 	});
 
 	//hide guide Info and show tourist message
 	$(document).on('click','.chatName',function(){
+		if($('.chatName').length >1){
+			$('.touristChatBox').hide();
+		}
 		$("#wrapper").toggleClass("active");
-		$(".cover").css('display','none');
+		$(".cover").hide();
 		var touristID = $(this).attr('data-id');
 		$('.chatWindow[data-id='+touristID+']').closest('.touristChatBox').css('display','block');
+		$('.chatBody').scrollTop($('.chat').height());
 		// $("#touristChat").css("display", "block");
 		// var chatWrapDiv = $("<div class='touristChatBox'></div>");
 		// $("#touristChat").append(chatWrapDiv);
@@ -66,8 +71,8 @@ $(function(){
 	});
 
 	$(document).on('click', '.removeButton', function(){
-		$(".cover").css('display','block');
-		$(this).closest('.touristChatBox').css('display','none');
+		$(".cover").show();
+		$(this).closest('.touristChatBox').hide();
 	})
 
 	function appendMessages(data){
@@ -77,26 +82,28 @@ $(function(){
 	}
 
 	function getIncomingMessage(data){
-		$('.chatWindow[data-id='+data.senderID+']').find('.chat').append(incomingTemplate(data));
+		$('.chatWindow[data-id='+data.from+']').find('.chat').append(incomingTemplate(data));
 	}
 	
 	$(document).on('keyup', ".messageBox", function(e){
 		if(e.keyCode === 13){
-			// var targetID = $(this).closest('.touristChatBox').attr("data-id");
+			var receiverID = $(this).closest('.chatWindow').attr("data-id");
 			var message = $(this).val();
 			// var name = guideData.firstName;
-			socket.emit('message',{message: message, name: guideData.firstName, senderID: guideData._id, image: guideData.picture });
-			$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({name: guideData.firstName, message: message, senderID: guideData._id, image: guideData.picture}))
+			socket.emit('message',{message: message, name: guideData.firstName, from: guideData._id, image: guideData.picture, to: receiverID});
+			$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({name: guideData.firstName, message: message, from: guideData._id, image: guideData.picture}));
+			$('.chatBody').scrollTop($('.chat').height());
 			message = $(this).val("");
 		}
 	});
 
 	$(document).on("click", ".btn-chat" ,function(){
-		// var targetID = $(this).closest('.touristChatBox').attr("data-id");
+		var receiverID = $(this).closest('.chatWindow').attr("data-id");
 		var message = $(this).closest('.chatWindow').find(".messageBox").val();
 		// var name = guideData.firstName;
-		socket.emit('message',{message: message, name: guideData.firstName, senderID: guideData._id, image: guideData.picture});
-		$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({name: guideData.firstName, message: message, senderID: guideData._id, image: guideData.picture}))
+		socket.emit('message',{message: message, name: guideData.firstName, from: guideData._id, image: guideData.picture, to: receiverID});
+		$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({name: guideData.firstName, message: message, from: guideData._id, image: guideData.picture}));
+		$('.chatBody').scrollTop($('.chat').height());
 		message = $(this).val("");
 	})
 

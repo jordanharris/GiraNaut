@@ -19,33 +19,33 @@ $(function(){
 		$.get('/userDoc', function(data){
 			var obj = {"name": $this.closest(".guideInnerCard").find("h2").text(),
 				   "image": $this.closest(".guideInnerCard").find("img").attr("src"),
-				   "receiver": $this.attr("data-id"),
+				   "to": $this.attr("data-id"),
 				   "userData": data,
-				   "sender": data._id,
+				   "from": data._id,
 				  };
 			if(newarr.length > 0 ){
-				if(newarr.indexOf(obj.receiver) !== -1){
-					$('.guideChatBox[data-id='+obj.receiver+']').find('.panelMessage').css("display","block");
+				if(newarr.indexOf(obj.to) !== -1){
+					$('.guideChatBox[data-id='+obj.to+']').show();
 					// $("#"+obj.name.split(" ").join("")+"").find(".panel-heading").next().next().css("display","block");
 				}
-				else if(newarr.indexOf(obj.receiver) === -1 && $(".guideChatBox").length < Math.floor($(window).innerWidth()/$(".guideChatBox").innerWidth()) ){
+				else if(newarr.indexOf(obj.to) === -1 && $(".guideChatBox").length < Math.floor($(window).innerWidth()/$(".guideChatBox").innerWidth()) ){
 					$("#chatMessenger").css("display", "block");
-					var chatWrapDiv = $("<div class='guideChatBox' data-id="+obj.receiver+"></div>");
+					var chatWrapDiv = $("<div class='guideChatBox' data-id="+obj.to+"></div>");
 					$("#chatMessenger").append(chatWrapDiv);
 					chatWrapDiv.html(chatTemplate(obj));
-					newarr.push(obj.receiver);
+					newarr.push(obj.to);
 				}
-				else if(newarr.indexOf(obj.receiver) === -1 && $(".guideChatBox").length >= Math.floor($(window).innerWidth()/$(".guideChatBox").innerWidth())){
+				else if(newarr.indexOf(obj.to) === -1 && $(".guideChatBox").length >= Math.floor($(window).innerWidth()/$(".guideChatBox").innerWidth())){
 					console.log('fix later');
 				}
 			}
 			else{
 				if($(".guideChatBox").length < Math.floor($(window).innerWidth()/$(".guideChatBox").innerWidth())){
 					$("#chatMessenger").css("display", "block");
-					var chatWrapDiv = $("<div class='guideChatBox' data-id="+obj.receiver+"></div>");
+					var chatWrapDiv = $("<div class='guideChatBox' data-id="+obj.to+"></div>");
 					$("#chatMessenger").append(chatWrapDiv);
 					chatWrapDiv.html(chatTemplate(obj));
-					newarr.push(obj.receiver);
+					newarr.push(obj.to);
 				}
 			}
 		})
@@ -76,8 +76,8 @@ $(function(){
 	$(document).on("click", ".removeButton" ,function(){
 		var guideChatBoxDiv = $(this).closest(".guideChatBox");
 		var guideAttrID = guideChatBoxDiv.attr('data-id');
-		guideChatBoxDiv.remove();
-		newarr.splice(newarr.indexOf(guideAttrID),1);
+		guideChatBoxDiv.hide();
+		// newarr.splice(newarr.indexOf(guideAttrID),1);
 	
 	})
 
@@ -87,32 +87,38 @@ $(function(){
 	//define socket events
 
 	socket.on('connect', function(){
-		
+		console.log("connected")
 	});
 
+	// socket.on('disconnect', function(){
+	// 	console.log("disconnected")
+	// });
+
 	socket.on("message",function(data){
-		if($('.guideChatBox[data-id='+data.senderID+']').length < 1){
+		if($('.guideChatBox[data-id='+data.from+']').length < 1){
 			$("#chatMessenger").css("display", "block");
 			appendMessages(data);
 			getIncomingMessage(data);
-			newarr.push(data.senderID);
+			$('.chatBody').scrollTop($('.chat').height());
+			newarr.push(data.from);
 		}
 		else{
 			getIncomingMessage(data);
-			newarr.push(data.senderID);
+			$('.chatBody').scrollTop($('.chat').height());
+			newarr.push(data.from);
 		}
-		// $('.chatWindow[data-id='+data.senderID+']').find('.chat').append(incomingTemplate(data));
-		// $(".chat").append(outgoingTemplate({name: data.name, message: data.message, senderID: data.targetID}));
+		// $('.chatWindow[data-id='+data.from+']').find('.chat').append(incomingTemplate(data));
+		// $(".chat").append(outgoingTemplate({name: data.name, message: data.message, from: data.targetID}));
 	});
 
 	function appendMessages(data){
-		var chatWrapDiv = $("<div class='guideChatBox' data-id="+data.senderID+"></div>");
+		var chatWrapDiv = $("<div class='guideChatBox' data-id="+data.from+"></div>");
 		$("#chatMessenger").append(chatWrapDiv);
 		chatWrapDiv.html(chatTemplate(data));
 	}
 
 	function getIncomingMessage(data){
-		$('.guideChatBox[data-id='+data.senderID+']').find('.chat').append(incomingTemplate(data));
+		$('.guideChatBox[data-id='+data.from+']').find('.chat').append(incomingTemplate(data));
 	}
 
 	$(document).on('keyup', ".messageBox", function(e){
@@ -125,8 +131,9 @@ $(function(){
 			var message = $(this).val();
 			var name = guideID[0].firstName;
 			var picture = guideID[0].picture;
-			socket.emit('message',{message: message, name: touristData.firstName, senderID: touristData._id, image: touristData.picture});
-			$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({name: touristData.firstName, message: message, image: touristData.picture}))
+			socket.emit('message',{message: message, name: touristData.firstName, from: touristData._id, image: touristData.picture, to:guideID[0]._id});
+			$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({name: touristData.firstName, message: message, image: touristData.picture}));
+			$('.chatBody').scrollTop($('.chat').height());
 			message = $(this).val("");
 		}
 	});
@@ -141,8 +148,9 @@ $(function(){
 		var message = $(this).closest('.chatWindow').find(".messageBox").val();
 		var name = guideID[0].firstName;
 		var picture = guideID[0].picture;
-		socket.emit('message',{message: message, name: touristData.firstName, senderID: touristData._id, image: touristData.picture});
-		$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({name: touristData.firstName, message: message, image: touristData.picture}))
+		socket.emit('message',{message: message, name: touristData.firstName, from: touristData._id, image: touristData.picture, to:guideID[0]._id});
+		$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({name: touristData.firstName, message: message, image: touristData.picture}));
+		$('.chatBody').scrollTop($('.chat').height());
 		message = $(this).closest('.chatWindow').find(".messageBox").val("");
 	})
 

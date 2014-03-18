@@ -3,6 +3,7 @@ var modelSignIn = require('../Models/signIn');
 var toursLP = module.exports = {
 
 	userHome: function(req, res){
+		res.cookie('userId',req.user._id.toString());
 		if(req.session.isGuide && !(req.user.hasApplied)){
 			req.user.isGuide = true;
 			req.user.applicationData = req.session.applicationData;

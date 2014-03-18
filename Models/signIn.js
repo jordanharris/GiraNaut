@@ -41,6 +41,10 @@ var userSchema = new mongoose.Schema({
 		type: String,
 		default: 'About me'
 	},
+	messages: {
+		type: [],
+		default: []
+	}, 
 	applicationData: {}
 })
 

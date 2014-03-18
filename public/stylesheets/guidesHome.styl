@@ -14,7 +14,7 @@ li
   // margin-top : -20px
   -webkit-border-top-right-radius: 10px
   -moz-border-radius-topright: 10px
-  border-bottom-top-radius: 10px
+  border-top-right-radius: 10px
   z-index: 2
   bottom: 0px
   left 0
@@ -206,28 +206,46 @@ li
 #messageQueue
   padding: 0px 0px 0px 0px
 
-.chatName
+.messageQueueDesign
   cursor: pointer
-  float:  left
-  font-size: 1.5em
-  width: 100%
+  position: relative
   line-height: 50px
-  margin: 0px 0px 0px 0px
-  color: #f0f0f0
   border: 2px solid #222
   padding: 10px 0px 10px 10px
   background: rgb(69,72,77);
+  margin: 0px 0px 0px 0px
   background: -moz-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%)
   background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(69,72,77,1)), color-stop(100%,rgba(0,0,0,1)))
   background: -webkit-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%)
   background: -o-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%)
   background: -ms-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%)
   background: radial-gradient(ellipse at center, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%)
+
+.chatName
+  // cursor: pointer
+  // float:  left
+  font-size: 1.5em
+  // width: 100%
+  // line-height: 50px
+  // margin: 0px 0px 0px 0px
+  color: #f0f0f0
+  // border: 2px solid #222
+  // padding: 10px 0px 10px 10px
+  // background: rgb(69,72,77);
+  // background: -moz-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%, rgba(0,0,0,1) 100%)
+  // background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(69,72,77,1)), color-stop(100%,rgba(0,0,0,1)))
+  // background: -webkit-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%)
+  // background: -o-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%)
+  // background: -ms-radial-gradient(center, ellipse cover, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%)
+  // background: radial-gradient(ellipse at center, rgba(69,72,77,1) 0%,rgba(0,0,0,1) 100%)
   // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 );
 
 .chatImage
-  float: right
+  position: absolute
+  top: 13px
+  right: 0px
   padding: 0px 5px 0px 0px
+  width: 50px
 
 
 
@@ -235,6 +253,11 @@ li
 
 .chat
   padding-left: 10px
+
+.chat li
+  margin-bottom: 10px
+  padding-bottom: 5px
+  border-bottom: 1px dotted #B3A9A9
 
 .touristMessenger
   margin: 10px 0px -20px 0px

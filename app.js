@@ -8,6 +8,7 @@ var controllersTours = require('./Controllers/tours');
 var authController = require('./controllers/authController');
 var guidesController = require('./controllers/guidesController');
 var chatController = require('./controllers/chatController');
+var modelSignIn = require('./Models/signIn');
 var http = require('http');
 var path = require('path');
 var passport = require('passport');
@@ -15,7 +16,7 @@ var passportConfig = require('./config/passport');
 var socketio = require('socket.io');
 var mongoose = require('mongoose');
 var cookie = require('cookie');
-
+var connect = require('connect');
 var app = express();
 
 // all environments
@@ -30,7 +31,7 @@ app.use(express.methodOverride());
 
 //passport
 app.use(express.cookieParser());
-app.use(express.session({secret: 'passport secret'}));
+app.use(express.session({secret: 'secret',  key: 'express.sid'}));
 app.use(passport.initialize());
 app.use(passport.session());
 // app.use(function (req, res) {
@@ -119,22 +120,70 @@ var server = http.createServer(app);
 //Start the web socket server
 var io = socketio.listen(server);
 
-var users = {}
+var users = {};
+
+//set authorization to grab user cookie ID
+
+io.set('authorization', function (handshakeData, accept) {
+  if (handshakeData.headers.cookie) {
+    handshakeData.cookie = cookie.parse(handshakeData.headers.cookie);
+    handshakeData.sessionID = connect.utils.parseSignedCookie(handshakeData.cookie['express.sid'], 'secret');
+
+    // console.log(cookie.parse(handshakeData));
+    if (handshakeData.cookie['express.sid'] == handshakeData.sessionID) {
+      return accept('Cookie is invalid.', false);
+    }
+  } else {
+    return accept('No cookie transmitted.', false);
+  } 
+
+  accept(null, true);
+});
 
 //If the client just connected
 io.sockets.on('connection', function(socket) {
-	console.log("test:" +this.socket.sessionID);
-
-	  // send the clients id to the client itself.
-	  // socket.send(socket.id);
-	// save.authenticate grab user session
-	// console.log(touristData.firstName)
+	// console.log("this should be the user idd: "+socket.handshake.cookie.userId);
+	// console.log("socket id please: "+socket.id);
+	users[socket.handshake.cookie.userId] = socket;
+	// console.log(users);
+	socket.on('disconnect', function(){
+	    users[socket.handshake.cookie.userId] = null;
+	    // console.log(users);
+	});
 	socket.on('message', function(data){
-		// console.log(socket.id, data.senderID);
-	 	socket.broadcast.emit('message', data);
+		// console.log(data);
+		if(users[data.to]){
+			modelSignIn.findById(data.to, function(err, doc){
+				doc.messages.push({from: data.from, to: data.to, message: data.message, loggedIn: true});
+				doc.markModified('messages');
+				doc.save(function(err){
+				});
+			});
+			modelSignIn.findById(data.from, function(err, doc){
+				doc.messages.push({to: data.to, from: data.from, message: data.message, loggedIn: true});
+				doc.markModified('messages');
+				doc.save(function(err){
+					users[data.to].emit('message', data);
+				});
+			});
+		}
+		else{
+			modelSignIn.findById(data.to, function(err, doc){
+				doc.messages.push({from: data.from, to: data.to, message: data.message, loggedIn: false});
+				doc.markModified('messages');
+				doc.save(function(err){});
+			});
+			modelSignIn.findById(data.from, function(err, doc){
+				doc.messages.push({to: data.to, from: data.from, message: data.message, loggedIn: true});
+				doc.markModified('messages');
+				doc.save(function(err){
+				});
+			});
+		}
+		//emit message to tourists/guides
+		// users[data.to].emit('message', data);
 	});
 });
-
 
 server.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
