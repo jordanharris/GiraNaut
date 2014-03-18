@@ -154,13 +154,13 @@ io.sockets.on('connection', function(socket) {
 		// console.log(data);
 		if(users[data.to]){
 			modelSignIn.findById(data.to, function(err, doc){
-				doc.messages.push({from: data.from, to: data.to, message: data.message, loggedIn: true});
+				doc.messages.push({from: data.from, to: data.to, message: data.message, time: data.timestamp , date: new Date(), loggedIn: true});
 				doc.markModified('messages');
 				doc.save(function(err){
 				});
 			});
 			modelSignIn.findById(data.from, function(err, doc){
-				doc.messages.push({to: data.to, from: data.from, message: data.message, loggedIn: true});
+				doc.messages.push({to: data.to, from: data.from, message: data.message, time: data.timestamp , date: new Date(), loggedIn: true});
 				doc.markModified('messages');
 				doc.save(function(err){
 					users[data.to].emit('message', data);
@@ -169,12 +169,12 @@ io.sockets.on('connection', function(socket) {
 		}
 		else{
 			modelSignIn.findById(data.to, function(err, doc){
-				doc.messages.push({from: data.from, to: data.to, message: data.message, loggedIn: false});
+				doc.messages.push({from: data.from, to: data.to, message: data.message, time: data.timestamp , date: new Date(), loggedIn: false});
 				doc.markModified('messages');
 				doc.save(function(err){});
 			});
 			modelSignIn.findById(data.from, function(err, doc){
-				doc.messages.push({to: data.to, from: data.from, message: data.message, loggedIn: true});
+				doc.messages.push({to: data.to, from: data.from, message: data.message, time: data.timestamp , date: new Date(), loggedIn: true});
 				doc.markModified('messages');
 				doc.save(function(err){
 				});

@@ -118,6 +118,7 @@ $(function(){
 	}
 
 	function getIncomingMessage(data){
+		data.timestamp = moment(data.timestamp).format('MMM D, h:mm a');
 		$('.guideChatBox[data-id='+data.from+']').find('.chat').append(incomingTemplate(data));
 	}
 
@@ -131,8 +132,9 @@ $(function(){
 			var message = $(this).val();
 			var name = guideID[0].firstName;
 			var picture = guideID[0].picture;
-			socket.emit('message',{message: message, name: touristData.firstName, from: touristData._id, image: touristData.picture, to:guideID[0]._id});
-			$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({name: touristData.firstName, message: message, image: touristData.picture}));
+			var timestamp = moment().format('MMM D, h:mm a YYYY');
+			socket.emit('message',{message: message, timestamp: timestamp, name: touristData.firstName, from: touristData._id, image: touristData.picture, to:guideID[0]._id});
+			$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({timestamp: moment(timestamp).format('MMM D, h:mm a'), name: touristData.firstName, message: message, image: touristData.picture}));
 			$('.chatBody').scrollTop($('.chat').height());
 			message = $(this).val("");
 		}
@@ -148,11 +150,29 @@ $(function(){
 		var message = $(this).closest('.chatWindow').find(".messageBox").val();
 		var name = guideID[0].firstName;
 		var picture = guideID[0].picture;
-		socket.emit('message',{message: message, name: touristData.firstName, from: touristData._id, image: touristData.picture, to:guideID[0]._id});
-		$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({name: touristData.firstName, message: message, image: touristData.picture}));
+		var timestamp = moment().format('MMM D, h:mm a YYYY');
+		socket.emit('message',{message: message, timestamp: timestamp, name: touristData.firstName, from: touristData._id, image: touristData.picture, to:guideID[0]._id});
+		$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({timestamp: moment(timestamp).format('MMM D, h:mm a'), name: touristData.firstName, message: message, image: touristData.picture}));
 		$('.chatBody').scrollTop($('.chat').height());
 		message = $(this).closest('.chatWindow').find(".messageBox").val("");
 	})
+
+	var falseMessages = messageData.filter(function(item){
+		return item.loggedIn === false;
+	})
+	for (var i = 0; i < falseMessages.length; i++) {
+		var messageFrom = []
+		$("#chatMessenger").css("display", "block");
+		if(messageFrom.indexOf(falseMessages[i].from) !== -1){
+			appendMessages(falseMessages[i]);
+			getIncomingMessage(falseMessages[i]);
+			messageFrom.push(falseMessages[i].from);
+		}
+		else{
+			getIncomingMessage(falseMessages[i]);
+			messageFrom.push(falseMessages[i].from);
+		}
+	};
 
 })	
 

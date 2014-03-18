@@ -86,7 +86,7 @@ script#incomingMessage(type="text/x-handlebars-template").
           <div class="header">
               <strong class="primary-font">{{name}}</strong>
               <small class="pull-right text-muted">
-                  <span class="glyphicon glyphicon-time"></span>12 mins ago
+                  <span class="glyphicon glyphicon-time timeago"></span>{{timestamp}}
               </small>
           </div>
           <p>
@@ -101,7 +101,7 @@ script#outgoingMessage(type="text/x-handlebars-template").
   </span>
       <div class="chat-body clearfix">
           <div class="header">
-              <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago
+              <small class=" text-muted"><span class="glyphicon glyphicon-time timeago"></span> {{timestamp}}
               </small>
               <strong class="pull-right primary-font">{{name}}</strong>
           </div>

@@ -82,6 +82,7 @@ $(function(){
 	}
 
 	function getIncomingMessage(data){
+		data.timestamp = moment(data.timestamp).format('MMM D, h:mm a');
 		$('.chatWindow[data-id='+data.from+']').find('.chat').append(incomingTemplate(data));
 	}
 	
@@ -90,8 +91,9 @@ $(function(){
 			var receiverID = $(this).closest('.chatWindow').attr("data-id");
 			var message = $(this).val();
 			// var name = guideData.firstName;
-			socket.emit('message',{message: message, name: guideData.firstName, from: guideData._id, image: guideData.picture, to: receiverID});
-			$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({name: guideData.firstName, message: message, from: guideData._id, image: guideData.picture}));
+			var timestamp = moment().format('MMM D, h:mm a YYYY');
+			socket.emit('message',{message: message, timestamp: timestamp, name: guideData.firstName, from: guideData._id, image: guideData.picture, to: receiverID});
+			$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({timestamp: moment(timestamp).format('MMM D, h:mm a'), name: guideData.firstName, message: message, from: guideData._id, image: guideData.picture}));
 			$('.chatBody').scrollTop($('.chat').height());
 			message = $(this).val("");
 		}
@@ -101,8 +103,9 @@ $(function(){
 		var receiverID = $(this).closest('.chatWindow').attr("data-id");
 		var message = $(this).closest('.chatWindow').find(".messageBox").val();
 		// var name = guideData.firstName;
-		socket.emit('message',{message: message, name: guideData.firstName, from: guideData._id, image: guideData.picture, to: receiverID});
-		$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({name: guideData.firstName, message: message, from: guideData._id, image: guideData.picture}));
+		var timestamp = moment().format('MMM D, h:mm a YYYY');
+		socket.emit('message',{message: message, timestamp: timestamp, name: guideData.firstName, from: guideData._id, image: guideData.picture, to: receiverID});
+		$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({timestamp: moment(timestamp).format('MMM D, h:mm a'), name: guideData.firstName, message: message, from: guideData._id, image: guideData.picture}));
 		$('.chatBody').scrollTop($('.chat').height());
 		message = $(this).val("");
 	})
