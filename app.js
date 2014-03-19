@@ -50,7 +50,7 @@ if ('development' == app.get('env')) {
 // })
 
 if(global.process.env.MONGO_URL){
-	mongoose.connect(global.process.env.MONGO_UR);
+	mongoose.connect(global.process.env.MONGO_URL);
 }
 else{
 	mongoose.connect('mongodb://localhost/giranaut');
