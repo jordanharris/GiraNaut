@@ -53,10 +53,6 @@
 
 
         //generate fake Data from Faker.js to fill out sidebar
-        var fakeGuides = [];
-		for (var i = 0; i < 20; i++) {
-			fakeGuides.push(Faker.Helpers.createCard());
-		}
 		var guideInfo = $('#guideBioCard').html();
 		var guideTemplate = Handlebars.compile(guideInfo);
 

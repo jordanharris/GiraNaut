@@ -10,7 +10,7 @@ $(function(){
 	var chatInboxTemplate = Handlebars.compile(chatInbox);
 
 	//background image stretch to fit the page
-	$.backstretch("../images/brazilLandscape.jpg");
+	$.backstretch("/images/brazilLandscape.jpg");
 
 
 	//show/hide sidebar on click
