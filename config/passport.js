@@ -37,7 +37,7 @@ var facebookStrategy = new FacebookStrategy({
 			picture: 'http://graph.facebook.com/'+profile.username+'/picture?width=300&height=300',
 			email: profile.emails[0].value,
 			gender: profile.gender,
-			location: profile._json.location.name,
+			// location: profile._json.location.name,
 			birthday: profile._json.birthday,
 		});
 		newUser.save(function(err,doc){
