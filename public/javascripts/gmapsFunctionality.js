@@ -45,14 +45,10 @@ $(function(){
 			if(newarr.length > 0 ){
 				if(newarr.indexOf(obj.from) !== -1){
 					$('.guideChatBox[data-id='+obj.from+']').show();
-					// $("#"+obj.name.split(" ").join("")+"").find(".panel-heading").next().next().css("display","block");
 				}
 				else if(newarr.indexOf(obj.from) === -1 && $(".guideChatBox").length < Math.floor($(window).innerWidth()/$(".guideChatBox").innerWidth()) ){
 					$("#chatMessenger").css("display", "block");
 					appendMessages(obj)
-					// var chatWrapDiv = $("<div class='guideChatBox' data-id="+obj.from+"></div>");
-					// $("#chatMessenger").append(chatWrapDiv);
-					// chatWrapDiv.html(chatTemplate(obj));
 					newarr.push(obj.from);
 				}
 				else if(newarr.indexOf(obj.from) === -1 && $(".guideChatBox").length >= Math.floor($(window).innerWidth()/$(".guideChatBox").innerWidth())){
@@ -63,9 +59,6 @@ $(function(){
 				if($(".guideChatBox").length < Math.floor($(window).innerWidth()/$(".guideChatBox").innerWidth())){
 					$("#chatMessenger").css("display", "block");
 					appendMessages(obj)
-					// var chatWrapDiv = $("<div class='guideChatBox' data-id="+obj.from+"></div>");
-					// $("#chatMessenger").append(chatWrapDiv);
-					// chatWrapDiv.html(chatTemplate(obj));
 					newarr.push(obj.from);
 				}
 			}
@@ -112,7 +105,6 @@ $(function(){
 	});
 
 	// socket.on('disconnect', function(){
-	// 	console.log("disconnected")
 	// });
 
 	socket.on("message",function(data){
@@ -128,28 +120,17 @@ $(function(){
 			$('.chatBody').scrollTop($('.chat').height());
 			newarr.push(data.from);
 		}
-		// $('.chatWindow[data-id='+data.from+']').find('.chat').append(incomingTemplate(data));
-		// $(".chat").append(outgoingTemplate({name: data.name, message: data.message, from: data.targetID}));
 	});
 
 	function appendMessages(data){
 		var chatWrapDiv = $("<div class='guideChatBox' data-id="+data.from+"></div>");
 		$("#chatMessenger").append(chatWrapDiv);
 		chatWrapDiv.html(chatTemplate(data));
-		// console.log(data);
 	}
 
 	function getIncomingMessage(data){
-		// if (allMessages.length > 0) {
-		// 	for (var i = 0; i < allMessages.length; i++) {
-		// 		data.timestamp = moment(data.timestamp).format('MMM D, h:mm a');
-		// 		$('.guideChatBox[data-id='+allMessages[i].from._id+']').find('.chat').append(incomingTemplate({timestamp:allMessages[i].time , from: allMessages[i].from._id, message: allMessages[i].message, image: allMessages[i].from.picture, name: allMessages[i].from.firstName}));
-		// 	};
-		// }
-		// else{
-			data.timestamp = moment(data.timestamp).format('MMM D, h:mm a');
-			$('.guideChatBox[data-id='+data.from+']').find('.chat').append(incomingTemplate(data));
-		// }
+		data.timestamp = moment(data.timestamp).format('MMM D, h:mm a');
+		$('.guideChatBox[data-id='+data.from+']').find('.chat').append(incomingTemplate(data));
 	}
 
 	$(document).on('keyup', ".messageBox", function(e){
@@ -158,7 +139,6 @@ $(function(){
 			var guideID = guidesData.filter(function(guides){
 				return guides._id === guideChatID;
 			})
-			// var targetID = $(this).closest('.chatWindow').attr("data-id");
 			var message = $(this).val();
 			var name = guideID[0].firstName;
 			var picture = guideID[0].picture;
@@ -175,8 +155,6 @@ $(function(){
 		var guideID = guidesData.filter(function(guides){
 			return guides._id === guideChatID;
 		})
-		// console.log(guideID);
-		// var targetID = $(this).closest('.chatWindow').attr("data-id");
 		var message = $(this).closest('.chatWindow').find(".messageBox").val();
 		var name = guideID[0].firstName;
 		var picture = guideID[0].picture;

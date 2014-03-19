@@ -20,7 +20,6 @@ var facebookStrategy = new FacebookStrategy({
 	callbackURL:'http://localhost:3000/facebook/callback',
 	profileFields: ['id','name','first_name','last_name','location','displayName','username','gender', 'photos','emails','birthday']
 }, function(accessToken, refreshToken, profile, done){
-	// console.log(profile);
 
 	UserSignInModel.findOne({userid:profile.id}, function(err, user){
 		if(user){

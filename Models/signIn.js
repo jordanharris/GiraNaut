@@ -56,11 +56,3 @@ var userSchema = new mongoose.Schema({
 })
 
 var signInData = module.exports = mongoose.model('user',userSchema);
-
-	// logInEvent: function(formLogIn){
-	// 	logInArray.push(formLogIn);	
-	// },
-
-	// signUpEvent: function(formSignUp){
-	// 	signUpArray.push(formSignUp);
-	// }

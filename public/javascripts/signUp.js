@@ -11,7 +11,6 @@ $(document).ready(function(){
 
   //regex checks for signup validation
 	$("#submitSignIn").on("click", function(e){
-		// e.preventDefault();	
 		var email = $("#emailSignIn").val();
 		var password = $("#passwordSignIn").val();
 		var mailformat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z\s]{2,4}$/;
@@ -29,6 +28,5 @@ $(document).ready(function(){
 		if($(".checkbox").is(":checked") === false){
 			$('#login-nav #emailSignIn, #login-nav #passwordSignIn').val("");
 		}
-		// window.location = "gmapsLandingPage.html";
 	});
 });

@@ -23,7 +23,6 @@ var toursLP = module.exports = {
 					req.user.messages[i].loggedIn = true
 				};
 				req.user.save();
-			// res.render('guidesHome',{user:req.user})
 			});
 		}
 		else{
@@ -39,21 +38,5 @@ var toursLP = module.exports = {
 			});
 		}
 	},
-
-	// guidesHome: function(req, res){
-	// 	res.render('guidesHome');
-	// }
-
-	// logIn: function(req, res){
-	// 	var logInSubmissions = req.body.logInSubmission;
-	// 	var logInArray	= modelSignIn.logInEvent(logInSubmissions);
-	// 	res.redirect('/home');
-	// },
-
-	// signUp: function(req, res){
-	// 	var signUpSubmissions = req.body.signUpSubmission;
-	// 	var signUpArray = modelSignIn.signUpEvent(signUpSubmissions);
-	// 	res.redirect('/home');
-	// }
 
 }

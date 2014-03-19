@@ -34,10 +34,6 @@ app.use(express.cookieParser());
 app.use(express.session({secret: 'secret',  key: 'express.sid'}));
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use(function (req, res) {
-// 	console.log(req.cookies);
-//         // res.send('<h2>Hello, your session id is ' + req.session + '</h2>');
-//     });
 
 
 app.use(app.router);
@@ -86,12 +82,10 @@ app.get(
 
 app.get('/', authController.login);
 app.get('/logout',authController.logout);
-// app.get('/sign-up', controllersGiraNaut.signUp);
 app.get('/apply', controllersGiraNaut.apply);
 app.get('/apply/successful', controllersGiraNaut.applicationSuccessful);
 app.get('/home/:name', authController.ensureAuthenticated, controllersTours.userHome);
 app.get('/userDoc', chatController.find);
-// app.get('/guideshome', controllersTours.guidesHome);
 
 app.post('/apply/authenticate',function(req, res, next){
 		req.session.applicationData = req.body;
@@ -99,7 +93,6 @@ app.post('/apply/authenticate',function(req, res, next){
 		next();
 	}, controllersGiraNaut.applicationSubmitted);
 app.post('/guide/update', guidesController.update);
-// app.post('/signUpSubmission', controllersTours.signUp);
 
 //Create Server
 var server = http.createServer(app);
@@ -142,13 +135,9 @@ io.set('authorization', function (handshakeData, accept) {
 
 //If the client just connected
 io.sockets.on('connection', function(socket) {
-	// console.log("this should be the user idd: "+socket.handshake.cookie.userId);
-	// console.log("socket id please: "+socket.id);
 	users[socket.handshake.cookie.userId] = socket;
-	// console.log(users);
 	socket.on('disconnect', function(){
 	    users[socket.handshake.cookie.userId] = null;
-	    // console.log(users);
 	});
 	socket.on('message', function(data){
 		// console.log(data);
@@ -180,8 +169,6 @@ io.sockets.on('connection', function(socket) {
 				});
 			});
 		}
-		//emit message to tourists/guides
-		// users[data.to].emit('message', data);
 	});
 });
 

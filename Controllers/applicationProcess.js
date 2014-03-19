@@ -1,13 +1,5 @@
 var giraNautLP = module.exports = {
 
-	// home: function(req, res){
-	// 	res.render('giraNautLP');
-	// },
-
-	// signUp: function(req, res){
-	// 	res.render('signUp');
-	// },
-
 	apply: function(req, res){
 		if(req.session.hasApplied){
 			res.render('appSuccess');
