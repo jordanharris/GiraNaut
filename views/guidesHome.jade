@@ -1,7 +1,7 @@
 extends layout
 
 block stylesheets
-  link(rel='stylesheet', href='/stylesheets/guidesHome.css')
+  link(rel='stylesheet', href='/stylesheets/min/guidesHome.min.css')
   link(href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet")
 
 block content
@@ -79,11 +79,11 @@ block scripts
   script(type="text/javascript").
       var guideData = !{JSON.stringify(user)};
       var messageData = !{JSON.stringify(user.messages)};
-  script(src="../javascripts/guidesHome.js")
+  script(src="../javascripts/min/guidesHome.min.js")
   script(src="//cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js")
   script(src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js")
   script(src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js")
   script(src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js")
   script(src="/socket.io/socket.io.js")
-  script(src="../javascripts/editableForm.js")
+  script(src="../javascripts/min/editableForm.min.js")
 
