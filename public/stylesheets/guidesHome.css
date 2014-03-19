@@ -75,6 +75,7 @@ li {
   margin-right: -150px;
   right: 150px;
   width: 250px;
+  overflow: auto;
   background: #222;
   position: fixed;
   height: 100%;
@@ -96,6 +97,9 @@ li {
 }
 #wrapper.active #sidebar-wrapper {
   right: -100px;
+}
+#wrapper.active #main_icon {
+  right: 0;
 }
 #page-content-wrapper {
   width: 100%;
@@ -155,11 +159,11 @@ li {
 }
 #main_icon {
   padding: 20px;
-  position: absolute;
   bottom: 0px;
   right: 250px;
   background: #252525;
   font-size: 18px;
+  transition: all 0.4s ease 0s;
   -webkit-border-top-left-radius: 10px;
   -moz-border-radius-topleft: 10px;
   border-top-left-radius: 10px;

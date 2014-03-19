@@ -138,7 +138,7 @@ $(function(){
 		// var sentMessages = messageData.filter(function(outgoing){
 		// 	return outgoing.from._id === guideData._id;
 		// });
-		if(allMessages[i].from._id !== guideData._id )
+		if(allMessages[i].from._id !== guideData._id ){
 			if($('.chatSidebar[data-id='+allMessages[i].from._id+']').length < 1 ){
 					$("#messageQueue").append(chatInboxTemplate({from: allMessages[i].from._id , name: allMessages[i].from.name, image: allMessages[i].from.picture}));
 					appendMessages({name: allMessages[i].from.name, from: allMessages[i].from._id});
@@ -150,6 +150,7 @@ $(function(){
 				getIncomingMessage({name: allMessages[i].from.firstName, from: allMessages[i].from._id, image: allMessages[i].from.picture, message:allMessages[i].message, timestamp: allMessages[i].time});
 				$('.chatBody').scrollTop($('.chat').height());
 			}
+		}
 		else{
 			if($('.chatSidebar[data-id='+allMessages[i].to._id+']').length < 1 ){
 					$("#messageQueue").append(chatInboxTemplate({from: allMessages[i].to_id , name: allMessages[i].to.name, image: allMessages[i].to.picture}));

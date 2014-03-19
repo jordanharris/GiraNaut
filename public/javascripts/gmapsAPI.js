@@ -22,7 +22,7 @@
 
         //create ovrelapping markers plug-in that separates markers that are on the same latLng
         var oms = new OverlappingMarkerSpiderfier(map, {keepSpiderfied: true});
-        // var iw = new google.maps.InfoWindow();
+        var iw = new google.maps.InfoWindow();
 		// oms.addListener('click', function(marker, event) {
 		// 	iw.setContent(marker.desc);
 		// 	iw.open(map, marker);
@@ -84,18 +84,18 @@
 					        // 	origin: new google.maps.Point(0,0),
 					        // 	anchor: new google.maps.Point(0, 32)
 					        // 	}; 
-					        // var marker = new RichMarker({
-					        //     position: results[0].geometry.location,
-					        //     map: map,
-					        //     // icon: image,
-					        //     flat: false,
-					        //     animation: google.maps.Animation.DROP,
-					        //     draggable: true,
-					        //     content: div
-				        	// });
-	    					var marker = new CustomMarker(results[0].geometry.location, map, div)
-				        	// oms.addMarker(marker);
-				        console.log("marker: ",marker," data: ",data)
+					        var marker = new RichMarker({
+					            position: results[0].geometry.location,
+					            map: map,
+					            // icon: image,
+					            flat: false,
+					            animation: google.maps.Animation.DROP,
+					            draggable: true,
+					            content: div
+				        	});
+	    					// var marker = new CustomMarker(results[0].geometry.location, map, div)
+				        	oms.addMarker(marker);
+				        // console.log("marker: ",marker," data: ",data)
 		        			(function(marker, guideData){
 				  				google.maps.event.addListener(marker, 'click', function() {
 				  					var chris = guideTemplate(guideData);
@@ -140,7 +140,14 @@
 
 
         //google maps styling of maps object:	
-	    // var stylers = [
+	    var stylers = [
+	    {
+		    "featureType": "poi",
+		    "elementType": "labels",
+		    "stylers": [
+		      { "visibility": "off" }
+		    ]
+		}
 	  //   	{
 	  //  		"featureType": "transit",
 	  //   	"stylers": [{ 
@@ -233,9 +240,9 @@
 	    //   		"color": "#333333" 
 	    //   	}]
 	  		// }
-		// ]
+		]
 		//calls setOptions and makes map styles to styles listed above:
-		// map.setOptions({styles: stylers});
+		map.setOptions({styles: stylers});
 
 		//google listener to calculate center of map when window is idle
 		google.maps.event.addDomListener(map, 'idle', function() {

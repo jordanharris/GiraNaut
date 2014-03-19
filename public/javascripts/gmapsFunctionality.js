@@ -10,6 +10,19 @@ $(function(){
 	var allMessages = messageData.filter(function(item){
 		return item;
 	})
+
+	allMessages.sort(function(a,b){
+		if(a.date > b.date){
+			return 1
+		}
+		else if(a.date < b.date){
+			return -1
+		} 
+		else{
+			return 0
+		}
+	})
+
 	var falseMessages = messageData.filter(function(item){
 		return item.loggedIn === false;
 	})
