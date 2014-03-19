@@ -37,7 +37,7 @@ $(function(){
     })
 	//SOCKET CODE FOR GUIDES
 	// connect the socket.io server
-	var socket = io.connect("http://localhost");
+	var socket = io.connect("http://premarchmadness.herokuapp.com/");
 
 	//define socket events
 
