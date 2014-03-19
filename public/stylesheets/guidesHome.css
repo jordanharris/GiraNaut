@@ -202,6 +202,9 @@ li {
   width: 79%;
   min-height: 50px;
 }
+.newMessage .chatName {
+  color: #e2a029;
+}
 .chatImage {
   position: absolute;
   top: 12px;
