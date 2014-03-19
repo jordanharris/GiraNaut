@@ -45,9 +45,9 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.configure(function(){
-	mongoose.connect('mongodb://localhost/giranaut');
-})
+// app.configure(function(){
+// 	mongoose.connect('mongodb://localhost/giranaut');
+// })
 
 //passport-facebook
 app.get('/login/facebook', passport.authenticate('facebook', {scope: ['user_birthday', 'email'] }));
