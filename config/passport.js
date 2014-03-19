@@ -17,7 +17,8 @@ passport.deserializeUser(function(userid, done){
 var facebookStrategy = new FacebookStrategy({
 	clientID: '222393557966150',
 	clientSecret:'31097b12254f8816a18a39a7e477a620',
-	callbackURL:'http://localhost:3000/facebook/callback',
+	callbackURL:'http://premarchmadness.herokuapp.com//facebook/callback',
+  //'http://localhost:3000/facebook/callback'
 	profileFields: ['id','name','first_name','last_name','location','displayName','username','gender', 'photos','emails','birthday']
 }, function(accessToken, refreshToken, profile, done){
 
@@ -49,7 +50,7 @@ var facebookStrategy = new FacebookStrategy({
 var googleStrategy = new GoogleStrategy({
     clientID: '79006386870-tclatmuptd2uk7h0r746ckvu1vfc810p.apps.googleusercontent.com',
     clientSecret: 'EwngPUzeZB2RcumnKKci6J90',
-    callbackURL: "http://localhost:3000/auth/google/callback"
+    callbackURL: "http://premarchmadness.herokuapp.com//auth/google/callback"
   }, function(accessToken, refreshToken, profile, done) {
   	console.log(profile);
 

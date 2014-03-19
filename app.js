@@ -49,6 +49,14 @@ if ('development' == app.get('env')) {
 // 	mongoose.connect('mongodb://localhost/giranaut');
 // })
 
+if(global.process.env.MONGO_URL){
+	mongoose.connect(global.process.env.MONGO_UR);
+}
+else{
+	mongoose.connect('mongodb://localhost/giranaut');
+}
+
+
 //passport-facebook
 app.get('/login/facebook', passport.authenticate('facebook', {scope: ['user_birthday', 'email'] }));
 app.get('/apply/facebook', function(req, res, next){
