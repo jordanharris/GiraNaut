@@ -9,7 +9,6 @@ var toursLP = module.exports = {
 			req.user.applicationData = req.session.applicationData;
 			req.user.hasApplied = req.session.hasApplied;
 			req.user.save(function(err, doc){
-				// console.log(err);
 				res.redirect('apply/successful');
 				req.session.isGuide = null;
 			})
@@ -18,17 +17,25 @@ var toursLP = module.exports = {
 			res.redirect('apply/successful');
 		}
 		else if(req.user.isGuide){
-			res.render('guidesHome',{user:req.user})
+			var allGuides = modelSignIn.findById({ _id: req.user._id}, function(err, docs) {
+				res.render('guidesHome',{user:req.user});	
+				for (var i = 0; i < req.user.messages.length; i++) {
+					req.user.messages[i].loggedIn = true
+				};
+				req.user.save();
+			// res.render('guidesHome',{user:req.user})
+			});
 		}
 		else{
-			var allGuides = modelSignIn.find({ isGuide: true }, function (err, docs) {
-				// for (var i = 0; i < docs.length; i++) {
-				// 	docs[i].picture = JSON.stringify(gm(docs[i].picture).resize(50)); 
-				// };
+			var allGuides = modelSignIn.find({ isGuide: true }).populate('messages.from','', 'user').exec(function (err, docs) {
 				res.render('toursHome',{
 				user:req.user,
 				bootstrap: docs
 				});	
+				for (var i = 0; i < req.user.messages.length; i++) {
+					req.user.messages[i].loggedIn = true
+				};
+				req.user.save();
 			});
 		}
 	},

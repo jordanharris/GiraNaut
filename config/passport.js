@@ -9,7 +9,7 @@ passport.serializeUser(function(user, done){
 });
 
 passport.deserializeUser(function(userid, done){
-	UserSignInModel.findOne({_id:userid}, function(err, user){
+	UserSignInModel.findOne({_id:userid}).populate('messages.from','','user').populate('messages.to','','user').exec(function(err, user){
 		done(err, user);
 	});
 });
@@ -84,17 +84,18 @@ var twitterStrategy = new TwitterStrategy({
     consumerSecret: 'NX2DXWaBzVppRgbTy9JISFkkjNZQcnEm3B0CvZECIBQ',
     callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
   }, function(token, tokenSecret, profile, done) {
-  	// console.log(profile);
+  	console.log(profile);
 
     UserSignInModel.findOne({ userid: profile.id }, function(err, user) {
     	if(user){
       		return done(err, user);
   		}
   		var newPhoto = (profile._json.profile_image_url).replace('_normal','');
+      var first = profile._json.name.split(' '); 
   		var newUser = new UserSignInModel({
   			provider: profile.provider,
   			userid: profile.id,	
-  			// firstName: profile._json.given_name,
+  			firstName: first[0],
   			// lastName: profile._json.family_name,
   			name: profile._json.name,
   			username: profile.username,

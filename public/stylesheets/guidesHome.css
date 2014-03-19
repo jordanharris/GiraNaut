@@ -195,10 +195,12 @@ li {
 .chatName {
   font-size: 1.5em;
   color: #f0f0f0;
+  width: 79%;
+  min-height: 50px;
 }
 .chatImage {
   position: absolute;
-  top: 13px;
+  top: 12px;
   right: 0px;
   padding: 0px 5px 0px 0px;
   width: 50px;
@@ -211,6 +213,10 @@ li {
   margin-bottom: 10px;
   padding-bottom: 5px;
   border-bottom: 1px dotted #b3a9a9;
+}
+.inboxName {
+  display: inline-block;
+  line-height: 22px;
 }
 .touristMessenger {
   margin: 10px 0px -20px 0px;

@@ -41,10 +41,17 @@ var userSchema = new mongoose.Schema({
 		type: String,
 		default: 'About me'
 	},
-	messages: {
-		type: [],
-		default: []
-	}, 
+	messages: [
+		{
+			to: mongoose.Schema.ObjectId,
+			from: mongoose.Schema.ObjectId,
+			message: String,
+			time: String,
+			date: { type: Date, default: Date.now },
+			loggedIn: Boolean
+
+		}
+	], 
 	applicationData: {}
 })
 

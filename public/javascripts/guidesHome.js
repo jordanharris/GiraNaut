@@ -64,10 +64,6 @@ $(function(){
 		var touristID = $(this).attr('data-id');
 		$('.chatWindow[data-id='+touristID+']').closest('.touristChatBox').css('display','block');
 		$('.chatBody').scrollTop($('.chat').height());
-		// $("#touristChat").css("display", "block");
-		// var chatWrapDiv = $("<div class='touristChatBox'></div>");
-		// $("#touristChat").append(chatWrapDiv);
-		// chatWrapDiv.html(chatTemplate());
 	});
 
 	$(document).on('click', '.removeButton', function(){
@@ -79,11 +75,19 @@ $(function(){
 		var chatWrapDiv = $("<div class='touristChatBox' data-id="+guideData._id+"></div>");
 		$("#touristChat").append(chatWrapDiv);
 		chatWrapDiv.html(chatTemplate(data));
+		console.log(data)
 	}
 
 	function getIncomingMessage(data){
 		data.timestamp = moment(data.timestamp).format('MMM D, h:mm a');
 		$('.chatWindow[data-id='+data.from+']').find('.chat').append(incomingTemplate(data));
+		// console.log(data)
+	}
+
+	function getOutgoingMessage(data){
+		data.timestamp = moment(data.timestamp).format('MMM D, h:mm a');
+		$('.chatWindow[data-id='+data.from+']').find('.chat').append(outgoingTemplate(data));
+		console.log("oops ", data)
 	}
 	
 	$(document).on('keyup', ".messageBox", function(e){
@@ -108,7 +112,59 @@ $(function(){
 		$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({timestamp: moment(timestamp).format('MMM D, h:mm a'), name: guideData.firstName, message: message, from: guideData._id, image: guideData.picture}));
 		$('.chatBody').scrollTop($('.chat').height());
 		message = $(this).val("");
+	});
+
+	var allMessages = messageData.filter(function(item){
+		return item;
+	});
+
+	allMessages.sort(function(a,b){
+		if(a.date > b.date){
+			return 1
+		}
+		else if(a.date < b.date){
+			return -1
+		} 
+		else{
+			return 0
+		}
 	})
+	console.log(allMessages)
+	for (var i = 0; i < allMessages.length; i++) {
+		// var receivedMessages = messageData.filter(function(item){
+		// 	return item.from._id !== guideData._id;
+		// });
 
+		// var sentMessages = messageData.filter(function(outgoing){
+		// 	return outgoing.from._id === guideData._id;
+		// });
+		if(allMessages[i].from._id !== guideData._id )
+			if($('.chatSidebar[data-id='+allMessages[i].from._id+']').length < 1 ){
+					$("#messageQueue").append(chatInboxTemplate({from: allMessages[i].from._id , name: allMessages[i].from.name, image: allMessages[i].from.picture}));
+					appendMessages({name: allMessages[i].from.name, from: allMessages[i].from._id});
+					getIncomingMessage({name: allMessages[i].from.firstName, from: allMessages[i].from._id, image: allMessages[i].from.picture, message:allMessages[i].message, timestamp: allMessages[i].time});
+					$('.chatWindow[data-id='+allMessages[i].from._id+']').closest('.touristChatBox').hide();
+					console.log(i)
+			}
+			else{
+				getIncomingMessage({name: allMessages[i].from.firstName, from: allMessages[i].from._id, image: allMessages[i].from.picture, message:allMessages[i].message, timestamp: allMessages[i].time});
+				$('.chatBody').scrollTop($('.chat').height());
+			}
+		else{
+			if($('.chatSidebar[data-id='+allMessages[i].to._id+']').length < 1 ){
+					$("#messageQueue").append(chatInboxTemplate({from: allMessages[i].to_id , name: allMessages[i].to.name, image: allMessages[i].to.picture}));
+					appendMessages({name: allMessages[i].to.name, from: allMessages[i].to._id});
+					getOutgoingMessage({name: allMessages[i].from.firstName, from: allMessages[i].to._id, image: allMessages[i].from.picture, message:allMessages[i].message, timestamp: allMessages[i].time});
+					$('.chatWindow[data-id='+allMessages[i].to._id+']').closest('.touristChatBox').hide();
+					console.log("hey")
+			}
+			else{
+				getOutgoingMessage({name: allMessages[i].from.firstName, from: allMessages[i].to._id, image: allMessages[i].from.picture, message:allMessages[i].message, timestamp: allMessages[i].time});
+				$('.chatBody').scrollTop($('.chat').height());
+				console.log("hey bud")
+			}		
+		};
+	}
 
+		
 })

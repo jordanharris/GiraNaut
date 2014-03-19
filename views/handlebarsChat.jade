@@ -16,7 +16,7 @@ script#guideBioCard(type="text/x-handlebars-template").
   </div>
 
 script#guideChatMessenger(type="text/x-handlebars-template").
-    <div class="row touristMessenger chatWindow" data-id="{{from}}">
+    <div class="row touristMessenger chatWindow" data-id="{{to}}">
         <div class="col-md-2 col-lg-2 messengerRight">
             <div class="panel panel-primary">
                 <div class="panel-heading">
@@ -113,6 +113,6 @@ script#outgoingMessage(type="text/x-handlebars-template").
 
 script#chatInbox(type="text/x-handlebars-template").
   <div class='messageQueueDesign'>
-    <li class="chatName chatSidebar" data-id="{{from}}">{{name}}</li>
+    <li class="chatName chatSidebar" data-id="{{from}}"><span class='inboxName'>{{name}}</span></li>
     <img class="chatImage" src="{{image}}">
   </div>
