@@ -112,7 +112,7 @@ $(function(){
 		socket.emit('message',{message: message, timestamp: timestamp, name: guideData.firstName, from: guideData._id, image: guideData.picture, to: receiverID});
 		$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({timestamp: moment(timestamp).format('MMM D, h:mm a'), name: guideData.firstName, message: message, from: guideData._id, image: guideData.picture}));
 		$('.chatBody').scrollTop($('.chat').height());
-		message = $(this).val("");
+		message = $(this).closest('.input-group').find('.messageBox').val("");
 	});
 
 	var allMessages = messageData.filter(function(item){
