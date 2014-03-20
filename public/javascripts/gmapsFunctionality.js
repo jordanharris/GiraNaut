@@ -101,7 +101,9 @@ $(function(){
 	//define socket events
 
 	socket.on('connect', function(){
-		console.log("connected")
+		setInterval(function(){
+			socket.emit('noop')
+		},8000);
 	});
 
 	// socket.on('disconnect', function(){
