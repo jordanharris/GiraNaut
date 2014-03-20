@@ -65,9 +65,10 @@
         function markerCreate(arrImages,arrLatLng ){
         	// for(var i=0; i < arrLatLng.length; i++ ){
         		for(var j = 0; j<guidesData.length ; j++){
-        			// var guideData = fakeGuides[j+(i*guidesData.length)];
-        			var address = guidesData[j].applicationData.address+" "+guidesData[j].applicationData.city+", "+guidesData[j].applicationData.state+" "+guidesData[j].applicationData.country;
-        			geocode(guidesData[j],address);
+        			if(guidesData[j].isGuide){
+        				var address = guidesData[j].applicationData.address+" "+guidesData[j].applicationData.city+", "+guidesData[j].applicationData.state+" "+guidesData[j].applicationData.country;
+        				geocode(guidesData[j],address);
+        			}
 		    	}
 	    }
 	    function geocode(data, address){
