@@ -26,7 +26,6 @@ $(function(){
 	var falseMessages = messageData.filter(function(item){
 		return item.loggedIn === false;
 	})
-	console.log(allMessages);
 	//user sidebar toggle class
 	$("#menu-toggle").click(function(e) {
 	        e.preventDefault();
@@ -52,7 +51,7 @@ $(function(){
 					newarr.push(obj.from);
 				}
 				else if(newarr.indexOf(obj.from) === -1 && $(".guideChatBox").length >= Math.floor($(window).innerWidth()/$(".guideChatBox").innerWidth())){
-					console.log('fix later');
+					// console.log('fix later');
 				}
 			}
 			else{

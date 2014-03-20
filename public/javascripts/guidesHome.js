@@ -101,9 +101,7 @@ $(function(){
 			var timestamp = moment().format('MMM D, h:mm a YYYY');
 			socket.emit('message',{message: message, timestamp: timestamp, name: guideData.firstName, from: guideData._id, image: guideData.picture, to: receiverID});
 			$(this).closest(".chatWindow").find(".chat").append(outgoingTemplate({timestamp: moment(timestamp).format('MMM D, h:mm a'), name: guideData.firstName, message: message, from: guideData._id, image: guideData.picture}));
-			setTimeout(function(){
-				$(this).closest('.chatBody').scrollTop($(this).closest('.chatBody').find('.chat').height());
-			},500);
+			$(this).closest('.chatBody').scrollTop($(this).closest('.chatBody').find('.chat').height());
 			message = $(this).val("");
 		}
 	});
