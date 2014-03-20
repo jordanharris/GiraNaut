@@ -5,12 +5,12 @@ var toursLP = module.exports = {
 	userHome: function(req, res){
 		res.cookie('userId',req.user._id.toString());
 		if(req.session.isGuide && !(req.user.hasApplied)){
-			req.user.isGuide = true;
+			// req.user.isGuide = true;
 			req.user.applicationData = req.session.applicationData;
 			req.user.hasApplied = req.session.hasApplied;
 			req.user.save(function(err, doc){
 				res.redirect('apply/successful');
-				req.session.isGuide = null;
+				// req.session.isGuide = null;
 			})
 		}
 		else if(req.user.hasApplied && !req.user.isGuide){

@@ -60,7 +60,7 @@ else{
 //passport-facebook
 app.get('/login/facebook', passport.authenticate('facebook', {scope: ['user_birthday', 'email'] }));
 app.get('/apply/facebook', function(req, res, next){
-		req.session.isGuide = true;
+		// req.session.isGuide = true;
 		next();
 	},
 	passport.authenticate('facebook', {scope: ['user_birthday', 'email'] }));
